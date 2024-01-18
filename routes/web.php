@@ -25,3 +25,7 @@ Route::get('/admin/dashboard', function () {
 Route::get('/admin/datatitik', function () {
     return view('admin.datatitik');
 });
+
+Route::get('/login', function () {
+    return view('auth.login');
+});

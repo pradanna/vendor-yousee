@@ -143,8 +143,8 @@
                             <td>Billboard</td>
                             <td><span class="pill-bg disewa">disewa</span></td>
                             <td>16 Januari 2023 - 30 februari 2025</td>
-                            <td><a class="btn-primary-sm">Detail</a>
-                                <a class="btn-warning-sm">Ubah Pesanan</a>
+                            <td>M<span class="d-flex gap-1"><a class="btn-primary-sm">Detail</a>
+                                    <a class="btn-warning-sm">Ubah Pesanan</a></span>
                             </td>
                         </tr>
 
