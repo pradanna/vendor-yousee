@@ -724,3 +724,25 @@ input.form-control {
   padding: 3px 10px;
   font-size: 0.8rem;
 }
+
+.bt-primary {
+  all: unset;
+  transition: all 0.5s;
+  display: block;
+  background-color: #4fd0f3;
+  color: white;
+  border-radius: 5px;
+  font-weight: bold;
+  padding: 15px;
+  text-align: center;
+  cursor: pointer;
+}
+.bt-primary.full {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+.bt-primary.sml {
+  padding: 3px 10px;
+  font-size: 0.8rem;
+}

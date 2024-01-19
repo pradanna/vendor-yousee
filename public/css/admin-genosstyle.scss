@@ -906,3 +906,29 @@ input.form-control {
     font-size: 0.8rem;
   }
 }
+
+.bt-primary {
+  all: unset;
+  transition: all 0.5s;
+  display: block;
+  background-color: $primary-color;
+  color: white;
+  border-radius: 5px;
+  font-weight: bold;
+  padding: 15px;
+  text-align: center;
+
+  // box-shadow: 1px 1px 5px $shadow-primary-color;
+  cursor: pointer;
+
+  &.full {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  &.sml {
+    padding: 3px 10px;
+    font-size: 0.8rem;
+  }
+}

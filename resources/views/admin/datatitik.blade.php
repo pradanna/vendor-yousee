@@ -110,18 +110,21 @@
 
                     <form class="mb-3">
 
-                        <div>
+                        <div class="mb-3">
                             <label for="startDate">Disewa dari tanggal</label>
                             <input id="startDate" class="form-control" type="date" />
                             <span id="startDateSelected"></span>
                         </div>
-                        <div>
+                        <div class="mb-3">
                             <label for="endDate">Sampai tanggal</label>
                             <input id="endDate" class="form-control" type="date" />
                             <span id="endDateSelected"></span>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <div>
+                            <button type="submit" class="bt-primary full">Submit</button>
+
+                        </div>
                     </form>
                 </div>
             </div>
