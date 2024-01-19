@@ -50,7 +50,8 @@
 
                 <ul>
                     <li>
-                        <a class=" menu active tooltip" href="/admin/dashboard"><span class="material-symbols-outlined">
+                        <a class=" menu {{ Request::is('admin/dashboard') ? 'active' : '' }} tooltip"
+                            href="/admin/dashboard"><span class="material-symbols-outlined">
                                 dashboard
                             </span>
                             <span class="text-menu"> Beranda</span>
@@ -59,7 +60,8 @@
                     </li>
 
                     <li>
-                        <a class="menu tooltip" href="/admin/datatitik">
+                        <a class="menu tooltip {{ Request::is('admin/datatitik') ? 'active' : '' }}"
+                            href="/admin/datatitik">
 
                             <span class="material-symbols-outlined">
                                 desktop_windows
@@ -71,7 +73,8 @@
 
 
                     <li>
-                        <a class="menu tooltip" href="/admin/profile"><span class="material-symbols-outlined">
+                        <a class="menu tooltip {{ Request::is('admin/profile') ? 'active' : '' }}"
+                            href="/admin/profile"><span class="material-symbols-outlined">
                                 account_circle
                             </span>
                             <span class="text-menu"> Profile</span>

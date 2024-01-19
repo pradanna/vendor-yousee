@@ -93,7 +93,7 @@
                 <div class="modal-body">
                     <div style="border-radius: 5px; border: 1px solid #eee; padding: 10px " class="mb-3">
                         <div class="d-flex justify-content-between ">
-                            <div>
+                            <div class="info-titik">
                                 <div>
                                     <span class="fw-bold ">Kota</span> <br>
                                     <span>Kota</span>
