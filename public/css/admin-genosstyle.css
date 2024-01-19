@@ -746,3 +746,35 @@ input.form-control {
   padding: 3px 10px;
   font-size: 0.8rem;
 }
+
+.panel-peta {
+  display: flex;
+}
+.panel-peta .maps {
+  position: relative;
+  padding: 10px;
+  flex: 1;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.panel-peta .street {
+  position: relative;
+  padding: 10px;
+  flex: 1;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.panel-gambar {
+  height: 600px;
+  position: relative;
+  padding: 10px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.panel-gambar img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
