@@ -730,6 +730,9 @@ body {
     color: white;
     transition: all 300ms ease-in-out;
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &:hover {
       background-color: #1dbde9;
@@ -965,4 +968,19 @@ input.form-control {
     height: 100%;
     object-fit: cover;
   }
+}
+
+.info-titik {
+  font-size: 0.8rem;
+  color: gray;
+
+  .title {
+    font-size: 1rem;
+    font-weight: bold;
+    color: black;
+  }
+}
+
+.label-input {
+  font-size: 0.8rem;
 }

@@ -581,6 +581,9 @@ body {
   color: white;
   transition: all 300ms ease-in-out;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .admin .btn-primary-sm:hover {
   background-color: #1dbde9;
@@ -777,4 +780,18 @@ input.form-control {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.info-titik {
+  font-size: 0.8rem;
+  color: gray;
+}
+.info-titik .title {
+  font-size: 1rem;
+  font-weight: bold;
+  color: black;
+}
+
+.label-input {
+  font-size: 0.8rem;
 }

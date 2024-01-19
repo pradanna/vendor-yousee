@@ -188,13 +188,13 @@
                 <div class="modal-body">
                     <div style="border-radius: 5px; border: 1px solid #eee; padding: 10px " class="mb-3">
                         <div class="d-flex justify-content-between ">
-                            <div>
-                                <div>
-                                    <span class="fw-bold ">Kota</span> <br>
+                            <div class="info-titik">
+                                <div class="mb-2">
+                                    <span class="title">Kota</span> <br>
                                     <span>Kota</span>
                                 </div>
                                 <div>
-                                    <span class="fw-bold ">Alamat</span> <br>
+                                    <span class="title ">Alamat</span> <br>
                                     <span>Jalan A Yani, Manahan, Banjarsari, Surakarta, Jawa Tengah</span>
                                 </div>
                             </div>
@@ -207,12 +207,12 @@
                     <form class="mb-3">
 
                         <div class="mb-3">
-                            <label for="startDate">Disewa dari tanggal</label>
+                            <label for="startDate " class="label-input">Disewa dari tanggal</label>
                             <input id="startDate" class="form-control" type="date" />
                             <span id="startDateSelected"></span>
                         </div>
                         <div class="mb-3">
-                            <label for="endDate">Sampai tanggal</label>
+                            <label for="endDate " class="label-input">Sampai tanggal</label>
                             <input id="endDate" class="form-control" type="date" />
                             <span id="endDateSelected"></span>
                         </div>
