@@ -29,3 +29,7 @@ Route::get('/admin/datatitik', function () {
 Route::get('/login', function () {
     return view('auth.login');
 });
+
+Route::get('/admin/profile', function () {
+    return view('admin.profile');
+});

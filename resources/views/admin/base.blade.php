@@ -71,7 +71,7 @@
 
 
                     <li>
-                        <a class="menu tooltip"><span class="material-symbols-outlined">
+                        <a class="menu tooltip" href="/admin/profile"><span class="material-symbols-outlined">
                                 account_circle
                             </span>
                             <span class="text-menu"> Profile</span>
