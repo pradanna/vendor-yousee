@@ -845,4 +845,13 @@ input.form-control {
     text-align: end;
     width: 100%;
   }
+  .panel-login {
+    margin: 10px;
+  }
+  .panel-login .gambar {
+    display: none;
+  }
+  .panel-login .login-container {
+    width: 100%;
+  }
 }
