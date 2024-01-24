@@ -30,6 +30,7 @@
 
     {{-- DATA TABLES --}}
     <link href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css" />
+    <link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css" />
 
 
     {{-- ICON --}}
@@ -91,8 +92,33 @@
             </div>
         </div>
 
+
         {{-- BODY --}}
         <div class="gen-body  ">
+
+            {{-- BOTTOMBAR --}}
+            <div class="bottombar">
+                <a href="/admin/dashboard" class="nav-button {{ Request::is('admin/dashboard') ? 'active' : '' }}">
+                    <span class="material-symbols-outlined ">
+                        dashboard
+                    </span>
+                    <span class="text-menu"> Beranda</span>
+                </a>
+                <a href="/admin/datatitik" class="nav-button {{ Request::is('admin/datatitik') ? 'active' : '' }}">
+                    <span class="material-symbols-outlined">
+                        desktop_windows
+                    </span>
+                    <span class="text-menu"> Data Titik</span>
+                </a>
+
+                <a href="/admin/profile" class="nav-button {{ Request::is('admin/profile') ? 'active' : '' }}">
+                    <span class="material-symbols-outlined">
+                        account_circle
+                    </span>
+                    <span class="text-menu"> Profile</span>
+                </a>
+
+            </div>
 
             {{-- NAVBAR --}}
             <div class="gen-nav">
@@ -108,97 +134,9 @@
                 </div>
                 <div class="end">
 
-                    <a class="iconbtn" id="dropdowchat" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="badges">
-                        </span>
-                        <span class=" material-symbols-outlined">
-                            chat
-                        </span>
-                    </a>
 
-                    <div class="dropdown-menu menudropdown notif" aria-labelledby="dropdowchat">
-                        <div class="title-container">
-                            <p class="title">Chats</p>
-                        </div>
-                        <hr>
-                        <div class="notif-container">
-                            <div class="notif-item unread">
-                                <div class="avatar">
-                                    <img
-                                        src="https://store.sirclo.com/blog/wp-content/uploads/2022/04/6.-user-persona.jpg" />
-                                </div>
-                                <div class="content-container">
-                                    <p class="title-content">Bagus </p>
-                                    <p class="body-content">You Have new transaction from bagus yanuar, please check!
-                                    </p>
-                                </div>
-                                <hr>
 
-                            </div>
 
-                            <div class="notif-item">
-                                <div class="avatar">
-                                    <img
-                                        src="https://store.sirclo.com/blog/wp-content/uploads/2022/04/6.-user-persona.jpg" />
-                                </div>
-                                <div class="content-container">
-                                    <p class="title-content">Topik </p>
-                                    <p class="body-content">You Have new transaction from Topik, please check! </p>
-                                </div>
-                                <hr>
-
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="footer-container"><a>See All Chats</a></div>
-                    </div>
-
-                    <a class="iconbtn " id="dropdownnotif" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="badges">
-                        </span>
-                        <span class="material-symbols-outlined">
-                            notifications
-                        </span>
-
-                    </a>
-                    <div class="dropdown-menu menudropdown notif" aria-labelledby="dropdownnotif">
-                        <div class="title-container">
-                            <p class="title">Notification</p>
-                            <a class="action"> Clear All</a>
-                        </div>
-                        <hr>
-                        <div class="notif-container">
-                            <div class="notif-item unread">
-                                <div class="avatar">
-                                    <img
-                                        src="https://store.sirclo.com/blog/wp-content/uploads/2022/04/6.-user-persona.jpg" />
-                                </div>
-                                <div class="content-container">
-                                    <p class="title-content">Bagus Want to buy something </p>
-                                    <p class="body-content">You Have new transaction from bagus yanuar, please check!
-                                    </p>
-                                </div>
-                                <hr>
-
-                            </div>
-
-                            <div class="notif-item">
-                                <div class="avatar">
-                                    <img
-                                        src="https://store.sirclo.com/blog/wp-content/uploads/2022/04/6.-user-persona.jpg" />
-                                </div>
-                                <div class="content-container">
-                                    <p class="title-content">Bagus Want to buy something </p>
-                                    <p class="body-content">You Have new transaction from bagus yanuar, please check!
-                                    </p>
-                                </div>
-                                <hr>
-
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="footer-container"><a>See All Notifications</a></div>
-                    </div>
                     <div class="dropdown">
 
                         <div class="profile-button">
@@ -228,6 +166,10 @@
             <div class="gen-content">
                 @yield('content')
             </div>
+
+            <div class="bottom-mobile">
+
+            </div>
         </div>
 
 
@@ -238,12 +180,10 @@
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
         </script>
 
-        <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
         <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
-
-
-
+        <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
 
         <script src="{{ asset('js/admin-genosstyle.js') }}"></script>
 

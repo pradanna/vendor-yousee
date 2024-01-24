@@ -384,6 +384,7 @@ body {
           flex-wrap: wrap;
 
           .card-status {
+            all: unset;
             display: flex;
             justify-content: space-between;
             height: 120px;
@@ -641,8 +642,9 @@ body {
   .portfolio-container {
     display: flex;
     gap: 100px;
-
+    flex-wrap: wrap;
     .portfolio {
+      all: unset;
       display: flex;
       gap: 10px;
 
@@ -983,4 +985,66 @@ input.form-control {
 
 .label-input {
   font-size: 0.8rem;
+}
+
+@media only screen and (max-width: 580px) {
+  .admin {
+    .sidebar {
+      display: none;
+    }
+
+    .gen-body {
+      .gen-nav {
+        .start {
+          .nav-button {
+            display: none;
+          }
+        }
+      }
+
+      .bottombar {
+        position: fixed !important;
+        bottom: 0;
+        background-color: white;
+        width: 100%;
+        height: 75px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        z-index: 10;
+        .nav-button {
+          all: unset;
+          width: 50px;
+          height: 50px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          &.active {
+            color: $primary-color;
+            font-weight: bold;
+          }
+          .text-menu {
+            font-size: 0.8rem;
+            text-wrap: nowrap;
+          }
+        }
+      }
+    }
+
+    .bottom-mobile {
+      height: 100px;
+    }
+
+    .portfolio-container {
+      justify-content: center !important;
+      gap: 50px;
+    }
+
+    .admin div.dataTables_wrapper div.dataTables_filter {
+      text-align: end;
+      width: 100%;
+    }
+  }
 }

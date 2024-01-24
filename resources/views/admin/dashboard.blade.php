@@ -4,7 +4,7 @@
     <div class="dashboard">
         {{-- STATUS --}}
         <div class="status-container icon-circle">
-            <div class="card-status color1">
+            <a class="card-status color1" href="/admin/datatitik">
                 <div class="content">
                     <div class="stat">
                         <p class="title">Jumlah Titik</p>
@@ -21,9 +21,9 @@
                         assignment
                     </span>
                 </div>
-            </div>
+            </a>
 
-            <div class="card-status color2">
+            <a class="card-status color2" href="/admin/datatitik">
                 <div class="content">
                     <div class="stat">
                         <p class="title">Titik Masih Tersedia</p>
@@ -40,9 +40,9 @@
                         event_available
                     </span>
                 </div>
-            </div>
+            </a>
 
-            <div class="card-status color3">
+            <a class="card-status color3" href="/admin/datatitik">
                 <div class="content">
                     <div class="stat">
                         <p class="title">Titik Perpakai</p>
@@ -59,7 +59,7 @@
                         cast
                     </span>
                 </div>
-            </div>
+            </a>
 
 
         </div>
@@ -72,53 +72,53 @@
                 </div>
 
                 <div class="portfolio-container">
-                    <div class="portfolio">
+                    <a class="portfolio" href="/admin/datatitik">
                         <img
                             src="https://internal.yousee-indonesia.com/images/type/3b0b46f2-0974-11ed-8622-f538f29e0354.png" />
                         <div class="isi">
                             <p class="nama">Baliho</p>
                             <p class="jumlah">360 Titik</p>
                         </div>
-                    </div>
+                    </a>
 
-                    <div class="portfolio">
+                    <a class="portfolio" href="/admin/datatitik">
                         <img
                             src="https://internal.yousee-indonesia.com/images/type/3b0b46f2-0974-11ed-8622-f538f29e0354.png" />
                         <div class="isi">
                             <p class="nama">Billboard</p>
                             <p class="jumlah">360 Titik</p>
                         </div>
-                    </div>
+                    </a>
 
-                    <div class="portfolio">
+                    <a class="portfolio" href="/admin/datatitik">
                         <img
                             src="https://internal.yousee-indonesia.com/images/type/3b0b46f2-0974-11ed-8622-f538f29e0354.png" />
                         <div class="isi">
                             <p class="nama">Baliho</p>
                             <p class="jumlah">360 Titik</p>
                         </div>
-                    </div>
+                    </a>
 
-                    <div class="portfolio">
+                    <a class="portfolio" href="/admin/datatitik">
                         <img
                             src="https://internal.yousee-indonesia.com/images/type/3b0b46f2-0974-11ed-8622-f538f29e0354.png" />
                         <div class="isi">
                             <p class="nama">Baliho</p>
                             <p class="jumlah">360 Titik</p>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
 
         </div>
 
         {{-- Titik disewa --}}
-        <div class="menu-container">
-            <div class="menu">
+        <div class="menu-container  ">
+            <div class="menu overflow-hidden">
                 <div class="title-container">
                     <p class="title">Titik yang sedang disewa</p>
                 </div>
-                <table id="datatitik" class="table table-striped" style="width:100%">
+                <table id="tableTitik" class="table table-striped nowrap " style="width:100%">
                     <thead>
                         <tr>
                             <th>Area</th>
@@ -207,12 +207,12 @@
                     <form class="mb-3">
 
                         <div class="mb-3">
-                            <label for="startDate " class="label-input">Disewa dari tanggal</label>
+                            <label for="startDate" class="label-input">Disewa dari tanggal</label>
                             <input id="startDate" class="form-control" type="date" />
                             <span id="startDateSelected"></span>
                         </div>
                         <div class="mb-3">
-                            <label for="endDate " class="label-input">Sampai tanggal</label>
+                            <label for="endDate" class="label-input">Sampai tanggal</label>
                             <input id="endDate" class="form-control" type="date" />
                             <span id="endDateSelected"></span>
                         </div>
@@ -334,7 +334,7 @@
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="d-lebar" name="d-lebar"
-                                            readonly placeholder="0">
+                                            readonltableTitiky placeholder="0">
                                         <label for="d-lebar" class="form-label">Lebar</label>
                                     </div>
                                 </div>
@@ -343,16 +343,15 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="d-panjang" type="number"
-                                            readonly name="d-panjang" placeholder="0">
-                                        <label for="d-panjang" class="form-label">Sisi</label>
+                                        <input type="text" class="form-control" id="d-sisi" type="number"
+                                            readonly name="d-sisi" placeholder="0">
+                                        <label for="d-sisi" class="form-label">Sisi</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="d-lebar" name="d-lebar"
-                                            readonly placeholder="0">
-                                        <label for="d-lebar" class="form-label">Trafik</label>
+                                        <input type="text" class="form-control" id="d-trafik" />
+                                        <label for="d-trafik" class="form-label">Trafik</label>
                                     </div>
                                 </div>
                             </div>
@@ -390,13 +389,23 @@
 @endsection
 
 @section('morejs')
-    <script>
-        new DataTable('#datatitik');
-    </script>
-
     <script script>
-        new DataTable('#tableTitik');
-
+        var tabletitik = $('#tableTitik').DataTable({
+            responsive: {
+                details: {
+                    display: DataTable.Responsive.display.modal({
+                        header: function(row) {
+                            var data = row.data();
+                            return 'Details for ' + data[0] + ' ' + data[1];
+                        }
+                    }),
+                    renderer: DataTable.Responsive.renderer.tableAll({
+                        tableClass: 'table'
+                    })
+                }
+            }
+        });
+        // new $.fn.dataTable.FixedHeader(tabletitik);
 
         let startDate = document.getElementById('startDate')
         let endDate = document.getElementById('endDate')

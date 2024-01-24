@@ -4,10 +4,9 @@
     <div class="dashboard">
         <div class="menu-container">
             <div class="menu d-flex justify-content-between ">
-                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="me-5">
                     <ol class="breadcrumb mb-0 ">
                         <li class="breadcrumb-item "><a href="#">Data Titik</a></li>
-                        <li class="breadcrumb-item active "><a href="#">Detail Titik</a></li>
                     </ol>
                 </nav>
 
@@ -22,7 +21,7 @@
         </div>
 
         <div class="menu-container">
-            <div class="menu">
+            <div class="menu overflow-hidden">
                 <div class="title-container">
                     <p class="title">Data Titik Anda</p>
                 </div>
@@ -296,9 +295,21 @@
 
 @section('morejs')
     <script>
-        new DataTable('#tableTitik');
-
-
+        var tabletitik = $('#tableTitik').DataTable({
+            responsive: {
+                details: {
+                    display: DataTable.Responsive.display.modal({
+                        header: function(row) {
+                            var data = row.data();
+                            return 'Details for ' + data[0] + ' ' + data[1];
+                        }
+                    }),
+                    renderer: DataTable.Responsive.renderer.tableAll({
+                        tableClass: 'table'
+                    })
+                }
+            }
+        });
         let startDate = document.getElementById('startDate')
         let endDate = document.getElementById('endDate')
 
