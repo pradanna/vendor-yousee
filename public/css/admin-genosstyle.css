@@ -83,6 +83,9 @@ body {
   width: 100%;
   overflow: hidden;
 }
+.admin .gen-body .bottombar {
+  display: none;
+}
 .admin .gen-body .gen-nav {
   height: 60px;
   width: 100%;
