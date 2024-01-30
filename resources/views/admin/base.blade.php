@@ -51,7 +51,7 @@
             <ul>
                 <li>
                     <a class=" menu {{ request()->is('dashboard') ? 'active' : '' }} tooltip"
-                       href="/admin/dashboard"><span class="material-symbols-outlined">
+                       href="{{ route('dashboard') }}"><span class="material-symbols-outlined">
                                 dashboard
                             </span>
                         <span class="text-menu"> Beranda</span>
@@ -59,9 +59,8 @@
                     </a>
                 </li>
                 <li>
-                    <a class="menu tooltip {{ Request::is('admin/datatitik') ? 'active' : '' }}"
-                       href="/admin/datatitik">
-
+                    <a class="menu tooltip {{ request()->is('titik-iklan') ? 'active' : '' }}"
+                       href="{{ route('item') }}">
                             <span class="material-symbols-outlined">
                                 desktop_windows
                             </span>

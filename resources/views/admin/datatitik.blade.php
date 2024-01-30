@@ -295,6 +295,8 @@
 
 @section('morejs')
     <script>
+        var path = '/{{ request()->path() }}';
+
         var tabletitik = $('#tableTitik').DataTable({
             responsive: {
                 details: {
@@ -322,5 +324,9 @@
             let endDateVal = e.target.value
             document.getElementById('endDateSelected').innerText = endDateVal
         })
+
+        $(document).ready(function () {
+
+        });
     </script>
 @endsection
