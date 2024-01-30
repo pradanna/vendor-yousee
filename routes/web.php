@@ -13,11 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\AuthController::class, 'login'])->name('login');
+Route::match(['post', 'get'],'/', [\App\Http\Controllers\AuthController::class, 'login'])->name('login')->middleware('guest');
+Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout')->middleware('auth:web');
 
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard');
+Route::group(['prefix' => '/', 'middleware' => 'auth:web'], function (){
+    Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 });
+
 
 
 Route::get('/admin/datatitik', function () {

@@ -5,8 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login</title>
-    <link rel="shortcut icon" href="{{ asset('images/local/favicon.ico') }}" title="Favicon" />
 
+    <link rel="shortcut icon" href="{{ asset('images/local/favicon.ico') }}" title="Favicon" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/admin-genosstyle.css') }}" type="text/css">
@@ -23,37 +24,55 @@
 </head>
 
 <body class="w-100 h-100 bg-login">
+@if (\Illuminate\Support\Facades\Session::has('failed'))
+    <script>
+        Swal.fire("Gagal", '{{\Illuminate\Support\Facades\Session::get('failed')}}', "error")
+    </script>
+@endif
+@if (\Illuminate\Support\Facades\Session::has('success'))
+    <script>
+        Swal.fire({
+            title: 'Success',
+            text: 'Berhasil Melakukan Login...',
+            icon: 'success',
+            timer: 700
+        }).then(() => {
+            window.location.href = '{{ route('home') }}';
+        })
+    </script>
+@endif
     <div style="height: 100vh">
-        @if (\Illuminate\Support\Facades\Session::has('failed'))
-            <script>
-                Swal.fire("Autentikasi Gagal ", 'Periksa Username dan Password!', "error")
-            </script>
-        @endif
         <div class="login">
-            <div class="panel-login pinggiran-bunder-10  ">
-
+            <div class="panel-login pinggiran-bunder-10">
                 <div class="gambar">
-                    <img src={{ asset('images/local/login.jpg') }} />
+                    <img src="{{ asset('images/local/login.jpg') }}" alt="image-login" />
                 </div>
-
                 <div class="login-container">
                     <div>
                         <p class="text-center mt-3 h2 fw-bold">Hello Again!</p>
                         <p class="text-center mt-3  fw-bold">Masukan Username dan Password</p>
-
                         <form class="p-3" method="POST">
                             @csrf
                             <div class="mb-3">
-                                <label for="username" class="form-label">Username</label>
-                                <input type="text" class="form-control login" id="username" name="username">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control login" id="email" name="email" value="{{ old('email') }}">
+                                @if($errors->has('email'))
+                                    <div class="text-danger f-small">
+                                        {{ $errors->first('email') }}
+                                    </div>
+                                @endif
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" class="form-control login" id="password" name="password">
+                                @if($errors->has('password'))
+                                    <div class="text-danger f-small">
+                                        {{ $errors->first('password') }}
+                                    </div>
+                                @endif
                             </div>
-                            <button class="btn-login   mt-4 d-block mb-3 w-100 " type="submit">LOGIN
+                            <button class="btn-login   mt-4 d-block mb-3 w-100" type="submit">LOGIN
                             </button>
-
                             <span class="d-block  text-center ">Bila ada kendala dalam login akun, silahkan hubungi
                                 <a href="#">admin</a></span>
                         </form>

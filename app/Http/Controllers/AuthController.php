@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vendor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -35,11 +37,31 @@ class AuthController extends Controller
                 }
                 $email = \request()->request->get('email');
                 $password = \request()->request->get('password');
-                
-            }catch (\Exception $e) {
+                $user = Vendor::with([])
+                    ->where('email', '=', $email)
+                    ->first();
 
+                if (!$user) {
+                    return redirect()->back()->with('failed', 'email pengguna tidak ditemukan...')->withInput();
+                }
+
+                $isPasswordValid = Hash::check($password, $user->password);
+                if (!$isPasswordValid) {
+                    return redirect()->back()->with('failed', 'password tidak cocok...')->withInput();
+                }
+
+                Auth::loginUsingId($user->id);
+                return redirect()->back()->with('success', 'Berhasil');
+            }catch (\Exception $e) {
+                return redirect()->back()->with('failed', 'Terjadi kesalahan server...')->withInput();
             }
         }
         return view('auth.login');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('login');
     }
 }
