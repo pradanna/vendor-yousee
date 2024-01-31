@@ -42,21 +42,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Kota Surakarta</td>
-                            <td>Jalan A Yani, Manahan, Banjarsari, Surakarta, Jawa Tengah</td>
-                            <td>5</td>
-                            <td>10</td>
-                            <td>Billboard</td>
-                            <td><span class="pill-bg disewa">disewa</span></td>
-                            <td>16 Januari 2023 - 30 februari 2025</td>
-                            <td><span class="d-flex gap-1"><a class="btn-primary-sm" data-bs-toggle="modal"
-                                        data-bs-target="#modaldetail">Detail</a>
-                                    <a class="btn-warning-sm" data-bs-toggle="modal" data-bs-target="#modalubahpesanan">Ubah
-                                        Pesanan</a>
-                                </span>
-                            </td>
-                        </tr>
+{{--                        <tr>--}}
+{{--                            <td>Kota Surakarta</td>--}}
+{{--                            <td>Jalan A Yani, Manahan, Banjarsari, Surakarta, Jawa Tengah</td>--}}
+{{--                            <td>5</td>--}}
+{{--                            <td>10</td>--}}
+{{--                            <td>Billboard</td>--}}
+{{--                            <td><span class="pill-bg disewa">disewa</span></td>--}}
+{{--                            <td>16 Januari 2023 - 30 februari 2025</td>--}}
+{{--                            <td><span class="d-flex gap-1"><a class="btn-primary-sm" data-bs-toggle="modal"--}}
+{{--                                        data-bs-target="#modaldetail">Detail</a>--}}
+{{--                                    <a class="btn-warning-sm" data-bs-toggle="modal" data-bs-target="#modalubahpesanan">Ubah--}}
+{{--                                        Pesanan</a>--}}
+{{--                                </span>--}}
+{{--                            </td>--}}
+{{--                        </tr>--}}
 
                     </tbody>
                     <tfoot>
@@ -296,22 +296,79 @@
 @section('morejs')
     <script>
         var path = '/{{ request()->path() }}';
-
-        var tabletitik = $('#tableTitik').DataTable({
-            responsive: {
-                details: {
-                    display: DataTable.Responsive.display.modal({
-                        header: function(row) {
-                            var data = row.data();
-                            return 'Details for ' + data[0] + ' ' + data[1];
+        var table;
+        function generateTable() {
+            table = $('#tableTitik').DataTable({
+                paging: true,
+                processing: true,
+                "aaSorting": [],
+                "order": [],
+                scrollX: true,
+                ajax: {
+                    type: 'GET',
+                    url: path,
+                    'data': function (d) {
+                        // d.area = $('#area').val();
+                        // d.name = $('#name').val();
+                    }
+                },
+                responsive: {
+                    details: {
+                        display: DataTable.Responsive.display.modal({
+                            header: function(row) {
+                                var data = row.data();
+                                return 'Details for ' + data[0] + ' ' + data[1];
+                            }
+                        }),
+                        renderer: DataTable.Responsive.renderer.tableAll({
+                            tableClass: 'table'
+                        })
+                    }
+                },
+                columns: [
+                    {
+                        data: 'city.name',
+                        name: 'city.name'
+                    },
+                    {
+                        data: 'address',
+                        name: 'address'
+                    },
+                    {
+                        data: 'height',
+                        name: 'height'
+                    },
+                    {
+                        data: 'width',
+                        name: 'width'
+                    },
+                    {
+                        data: 'type.name',
+                        name: 'type.name',
+                    },{
+                        data: null,
+                        render: function () {
+                            return 'Disewa'
                         }
-                    }),
-                    renderer: DataTable.Responsive.renderer.tableAll({
-                        tableClass: 'table'
-                    })
-                }
-            }
-        });
+                    },{
+                        data: null,
+                        render: function () {
+                            return '16 Januari 2023 - 30 februari 2025'
+                        }
+                    },{
+                        data: null,
+                        render: function () {
+                            return '<span class="d-flex gap-1">' +
+                                '<a class="btn-primary-sm" data-bs-toggle="modal" data-bs-target="#modaldetail">Detail</a>' +
+                                '<a class="btn-warning-sm" data-bs-toggle="modal" data-bs-target="#modalubahpesanan">Ubah' +
+                                'Pesanan</a>\n' +
+                                '</span>'
+                        }
+                    },
+                ]
+            });
+        }
+
         let startDate = document.getElementById('startDate')
         let endDate = document.getElementById('endDate')
 
@@ -326,7 +383,7 @@
         })
 
         $(document).ready(function () {
-
+            generateTable();
         });
     </script>
 @endsection

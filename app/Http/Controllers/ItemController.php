@@ -11,14 +11,9 @@ class ItemController extends Controller
     public function index()
     {
         if (\request()->ajax()) {
-            $data = Item::with(['type'])
+            $data = Item::with(['type', 'city'])
                 ->get();
-            $results = DataTables::of($data)->addIndexColumn()->make(true);
-            return response()->json([
-                'data' => $results,
-                'message' => 'success',
-                'status' => 200
-            ], 200);
+            return DataTables::of($data)->addIndexColumn()->make(true);
         }
         return view('admin.datatitik');
     }

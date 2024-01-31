@@ -13,4 +13,9 @@ class Item extends Model
     {
         return $this->belongsTo(Type::class, 'type_id');
     }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class, 'city_id');
+    }
 }
