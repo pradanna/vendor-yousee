@@ -20,6 +20,7 @@ Route::group(['prefix' => '/', 'middleware' => 'auth:web'], function () {
     Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
     Route::group(['prefix' => 'titik-iklan'], function () {
         Route::get('/', [\App\Http\Controllers\ItemController::class, 'index'])->name('item');
+        Route::match(['post', 'get'], '/{id}', [\App\Http\Controllers\ItemController::class, 'getDataByID'])->name('item.by.id');
     });
 
 

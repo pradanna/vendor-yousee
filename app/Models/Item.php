@@ -18,4 +18,10 @@ class Item extends Model
     {
         return $this->belongsTo(City::class, 'city_id');
     }
+
+    public function rent()
+    {
+        return $this->hasOne(ItemRent::class, 'item_id')
+            ->orderBy('end', 'DESC');
+    }
 }
