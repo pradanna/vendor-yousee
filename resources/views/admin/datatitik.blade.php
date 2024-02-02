@@ -169,8 +169,6 @@
                              aria-labelledby="pills-detail-tab">
                             <div class="row">
                                 <input type="hidden" id="d-id" name="d-id">
-
-
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="d-provinsi" name="d-provinsi"
@@ -229,7 +227,7 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="d-panjang" type="number"
+                                        <input type="text" class="form-control" id="d-panjang"
                                                readonly name="d-panjang" placeholder="0">
                                         <label for="d-panjang" class="form-label">Panjang/Tinggi</label>
                                     </div>
@@ -246,16 +244,16 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="d-panjang" type="number"
-                                               readonly name="d-panjang" placeholder="0">
-                                        <label for="d-panjang" class="form-label">Sisi</label>
+                                        <input type="text" class="form-control" id="d-sisi"
+                                               readonly name="d-sisi" placeholder="0">
+                                        <label for="d-sisi" class="form-label">Sisi</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="d-lebar" name="d-lebar"
+                                        <input type="text" class="form-control" id="d-trafik" name="d-trafik"
                                                readonly placeholder="0">
-                                        <label for="d-lebar" class="form-label">Trafik</label>
+                                        <label for="d-trafik" class="form-label">Trafik</label>
                                     </div>
                                 </div>
                             </div>
@@ -296,6 +294,7 @@
         var path = '/{{ request()->path() }}';
         var table;
         var modalChangeOrder = new bootstrap.Modal(document.getElementById('modalubahpesanan'));
+        var modalDetail = new bootstrap.Modal(document.getElementById('modaldetail'));
 
         function generateTable() {
             table = $('#tableTitik').DataTable({
@@ -388,7 +387,7 @@
                         render: function (data) {
                             const id = data['id'];
                             return '<span class="d-flex gap-1">' +
-                                '<a class="btn-primary-sm" data-bs-toggle="modal" data-bs-target="#modaldetail">Detail</a>' +
+                                '<a class="btn-primary-sm btn-detail" data-id="' + id + '">Detail</a>' +
                                 '<a href="#" class="btn-warning-sm btn-change-order" data-id="' + id + '">Ubah Pesanan</a>\n' +
                                 '</span>'
                         }
@@ -396,6 +395,7 @@
                 ],
                 "fnDrawCallback": function () {
                     changeOrderEvent();
+                    showDetailEvent();
                 }
             });
         }
@@ -446,6 +446,35 @@
             }
         }
 
+        async function getDataDetailHandler(id) {
+            try {
+                let url = path + '/' + id;
+                let response = await $.get(url);
+                let data = response['data']
+                console.log(data)
+                generateDetailInformation(data);
+                modalDetail.show();
+            } catch (e) {
+                let error_message = JSON.parse(e.responseText);
+                alert(error_message.message)
+            }
+        }
+
+        function generateDetailInformation(data) {
+            $('#d-provinsi').val(data['city']['province']['name']);
+            $('#d-kota').val(data['city']['name']);
+            $('#d-alamat').val(data['address']);
+            $('#d-lokasi').val(data['location']);
+            $('#d-urlstreetview').val(data['url']);
+            $('#d-tipe').val(data['type']['name']);
+            $('#d-posisi').val(data['position']);
+            $('#d-panjang').val(data['height']);
+            $('#d-lebar').val(data['width']);
+            $('#d-sisi').val(data['side']);
+            $('#d-trafik').val(data['trafic']);
+
+        }
+
         async function saveOrderHandler(id) {
             try {
                 let url = path + '/' + id;
@@ -453,12 +482,28 @@
                     start: $('#startDate').val(),
                     end: $('#endDate').val()
                 };
-                let response = await $.post(url, data);
-                console.log(response);
+                await $.post(url, data);
+                Swal.fire({
+                    title: 'Success',
+                    text: 'Berhasil Menambahkan Data...',
+                    icon: 'success',
+                    timer: 1000
+                }).then(() => {
+                    window.location.reload();
+                })
             } catch (e) {
                 let error_message = JSON.parse(e.responseText);
                 alert(error_message.message)
             }
+        }
+
+
+        function showDetailEvent() {
+            $('.btn-detail').on('click', function (e) {
+                e.preventDefault();
+                let id = this.dataset.id;
+                getDataDetailHandler(id);
+            });
         }
 
         function changeOrderEvent() {
@@ -472,10 +517,25 @@
         function saveOrderEvent() {
             $('#btn-save-order').on('click', function (e) {
                 e.preventDefault();
-                let id = $('#txt-id').val();
-                saveOrderHandler(id);
+                Swal.fire({
+                    title: "Konfirmasi!",
+                    text: "Apakah anda yakin menyimpan data?",
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya',
+                    cancelButtonText: 'Batal',
+                }).then((result) => {
+                    if (result.value) {
+                        let id = $('#txt-id').val();
+                        saveOrderHandler(id);
+                    }
+                });
+
             });
         }
+
         $(function () {
             $.ajaxSetup({
                 headers: {

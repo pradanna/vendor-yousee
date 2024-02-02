@@ -24,7 +24,7 @@ class ItemController extends CustomController
     {
 
         try {
-            $data = Item::with(['rent', 'city'])
+            $data = Item::with(['rent', 'city.province', 'type'])
                 ->where('id', '=', $id)
                 ->first();
             if (!$data) {
