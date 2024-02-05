@@ -38,7 +38,7 @@
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
     <link href="{{ asset('/css/sweetalert2.css') }}" rel="stylesheet">
     <script src="{{ asset('/js/sweetalert2.min.js') }}"></script>
-
+    @yield('css')
 </head>
 
 <body>
@@ -73,8 +73,8 @@
 
 
                 <li>
-                    <a class="menu tooltip {{ Request::is('admin/profile') ? 'active' : '' }}"
-                       href="/admin/profile"><span class="material-symbols-outlined">
+                    <a class="menu tooltip {{ Request::is('profile') ? 'active' : '' }}"
+                       href="{{ route('profile') }}"><span class="material-symbols-outlined">
                                 account_circle
                             </span>
                         <span class="text-menu"> Profile</span>

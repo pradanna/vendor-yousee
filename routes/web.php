@@ -23,9 +23,8 @@ Route::group(['prefix' => '/', 'middleware' => 'auth:web'], function () {
         Route::match(['post', 'get'], '/{id}', [\App\Http\Controllers\ItemController::class, 'getDataByID'])->name('item.by.id');
     });
 
+    Route::match(['post', 'get'],'/profile', [\App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 
 });
 
-Route::get('/admin/profile', function () {
-    return view('admin.profile');
-});
+

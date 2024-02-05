@@ -111,18 +111,16 @@
                     </div>
 
                     <form class="mb-3">
-
                         <div class="mb-3">
-                            <label for="startDate " class="label-input">Disewa dari tanggal</label>
-                            <input id="startDate" class="form-control" type="date"/>
+                            <label for="startDate" class="label-input">Disewa dari tanggal</label>
+                            <input id="startDate" class="form-control" type="date" />
                             <span id="startDateSelected"></span>
                         </div>
                         <div class="mb-3">
-                            <label for="endDate " class="label-input">Sampai tanggal</label>
-                            <input id="endDate" class="form-control" type="date"/>
+                            <label for="endDate" class="label-input">Sampai tanggal</label>
+                            <input id="endDate" class="form-control" type="date" />
                             <span id="endDateSelected"></span>
                         </div>
-
                         <div>
                             <a href="#" id="btn-save-order" class="bt-primary full">Submit</a>
                         </div>
@@ -185,27 +183,21 @@
                                     </div>
                                 </div>
                             </div>
-
-
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="d-alamat" name="d-alamat" readonly
                                        placeholder="alamat">
                                 <label for="d-alamat" class="form-label">Alamat</label>
                             </div>
-
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="d-lokasi" name="d-lokasi" readonly
                                        placeholder="lokasi">
                                 <label for="d-lokasi" class="form-label">Lokasi</label>
                             </div>
-
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="d-urlstreetview" name="d-urlstreetview"
                                        readonly placeholder="urlstreetview">
                                 <label for="d-urlstreetview" class="form-label">URL Street View</label>
                             </div>
-
-
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-floating mb-3">
@@ -223,7 +215,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-floating mb-3">
@@ -240,7 +231,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-floating mb-3">
@@ -260,17 +250,9 @@
                         </div>
                         <div class="tab-pane fade" id="pills-maps" role="tabpanel" aria-labelledby="pills-maps-tab">
                             <div class="panel-peta mb-3" id="map-detail">
-                                <div class="maps">
-                                    <iframe
-                                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15819.870767231081!2d110.8195408!3d-7.578495749999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sid!4v1705640877995!5m2!1sen!2sid"
-                                        style="border:0;width: 100%; height: 500px;" allowfullscreen="" loading="lazy"
-                                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <div class="maps" id="main-map">
                                 </div>
-                                <div class="street">
-                                    <iframe
-                                        src="https://www.google.com/maps/embed?pb=!4v1705640909558!6m8!1m7!1sn74xmFeOXL1zClJPLP_nSg!2m2!1d-7.580094072252944!2d110.8180529316843!3f355.22287!4f0!5f0.7820865974627469"
-                                        style="border:0; width: 100%; height: 500px;" allowfullscreen="" loading="lazy"
-                                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <div class="street" id="streetview-wrapper">
                                 </div>
                             </div>
 
@@ -279,7 +261,7 @@
                         <div class="tab-pane fade" id="pills-gambar1" role="tabpanel"
                              aria-labelledby="pills-gambar1-tab">
                             <div class="panel-gambar">
-                                <img src="{{ asset('images/local/login.jpg') }}"/>
+                                <img src="" alt="item-image" id="vendor-image"/>
                             </div>
                         </div>
                     </div>
@@ -289,7 +271,13 @@
     </div>
 @endsection
 
+@section('css')
+    <script src="{{ asset('js/map-control.js?v=2') }}"></script>
+@endsection
 @section('morejs')
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1MgLuZuyqR_OGY3ob3M52N46TDBRI_9k&callback=initMap&v=weekly"
+        async></script>
     <script>
         var path = '/{{ request()->path() }}';
         var table;
@@ -472,7 +460,23 @@
             $('#d-lebar').val(data['width']);
             $('#d-sisi').val(data['side']);
             $('#d-trafik').val(data['trafic']);
+            let latitude = data['latitude'];
+            let longitude = data['longitude'];
+            let streetViewWrapper = $('#streetview-wrapper');
+            let imageWrapper = $('#vendor-image');
+            streetViewWrapper.empty();
+            streetViewWrapper.append(data['url'])
+            imageWrapper.attr('src', data['image3']);
 
+            const myLatLng = {lat: latitude, lng: longitude};
+            map_container = new google.maps.Map(document.getElementById("main-map"), {
+                zoom: 15,
+                center: myLatLng,
+            });
+            new google.maps.Marker({
+                position: new google.maps.LatLng(latitude, longitude),
+                map: map_container,
+            });
         }
 
         async function saveOrderHandler(id) {
