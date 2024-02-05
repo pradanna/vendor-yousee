@@ -13,23 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::match(['post', 'get'],'/', [\App\Http\Controllers\AuthController::class, 'login'])->name('login')->middleware('guest');
+Route::match(['post', 'get'], '/', [\App\Http\Controllers\AuthController::class, 'login'])->name('login')->middleware('guest');
 Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout')->middleware('auth:web');
 
-Route::group(['prefix' => '/', 'middleware' => 'auth:web'], function (){
+Route::group(['prefix' => '/', 'middleware' => 'auth:web'], function () {
     Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+    Route::group(['prefix' => 'titik-iklan'], function () {
+        Route::get('/', [\App\Http\Controllers\ItemController::class, 'index'])->name('item');
+        Route::match(['post', 'get'], '/{id}', [\App\Http\Controllers\ItemController::class, 'getDataByID'])->name('item.by.id');
+    });
+
+    Route::match(['post', 'get'],'/profile', [\App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+
 });
 
 
-
-Route::get('/admin/datatitik', function () {
-    return view('admin.datatitik');
-});
-
-Route::get('/login', function () {
-    return view('auth.login');
-});
-
-Route::get('/admin/profile', function () {
-    return view('admin.profile');
-});

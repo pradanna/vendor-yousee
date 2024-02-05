@@ -11,6 +11,18 @@ class Vendor extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    protected $fillable = [
+        'name',
+        'address',
+        'phone',
+        'brand',
+        'email',
+        'password',
+        'picName',
+        'picPhone',
+        'last_seen'
+    ];
+
     protected $hidden = [
         'password',
     ];

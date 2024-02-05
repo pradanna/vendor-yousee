@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper\CustomController;
 use App\Models\Vendor;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class AuthController extends Controller
+class AuthController extends CustomController
 {
     public function __construct()
     {
+        parent::__construct();
         $this->middleware('guest')->except('logout');
     }
 
@@ -41,6 +44,7 @@ class AuthController extends Controller
                     ->where('email', '=', $email)
                     ->first();
 
+
                 if (!$user) {
                     return redirect()->back()->with('failed', 'email pengguna tidak ditemukan...')->withInput();
                 }
@@ -49,8 +53,13 @@ class AuthController extends Controller
                 if (!$isPasswordValid) {
                     return redirect()->back()->with('failed', 'password tidak cocok...')->withInput();
                 }
-
                 Auth::loginUsingId($user->id);
+                $now = Carbon::now()->format('Y-m-d H:i:s');
+                Vendor::with([])
+                    ->where('id', '=', auth()->id())
+                    ->update([
+                        'last_seen' => $now
+                    ]);
                 return redirect()->back()->with('success', 'Berhasil');
             }catch (\Exception $e) {
                 return redirect()->back()->with('failed', 'Terjadi kesalahan server...')->withInput();

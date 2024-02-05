@@ -36,7 +36,9 @@
     {{-- ICON --}}
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
-
+    <link href="{{ asset('/css/sweetalert2.css') }}" rel="stylesheet">
+    <script src="{{ asset('/js/sweetalert2.min.js') }}"></script>
+    @yield('css')
 </head>
 
 <body>
@@ -51,7 +53,7 @@
             <ul>
                 <li>
                     <a class=" menu {{ request()->is('dashboard') ? 'active' : '' }} tooltip"
-                       href="/admin/dashboard"><span class="material-symbols-outlined">
+                       href="{{ route('dashboard') }}"><span class="material-symbols-outlined">
                                 dashboard
                             </span>
                         <span class="text-menu"> Beranda</span>
@@ -59,9 +61,8 @@
                     </a>
                 </li>
                 <li>
-                    <a class="menu tooltip {{ Request::is('admin/datatitik') ? 'active' : '' }}"
-                       href="/admin/datatitik">
-
+                    <a class="menu tooltip {{ request()->is('titik-iklan') ? 'active' : '' }}"
+                       href="{{ route('item') }}">
                             <span class="material-symbols-outlined">
                                 desktop_windows
                             </span>
@@ -72,8 +73,8 @@
 
 
                 <li>
-                    <a class="menu tooltip {{ Request::is('admin/profile') ? 'active' : '' }}"
-                       href="/admin/profile"><span class="material-symbols-outlined">
+                    <a class="menu tooltip {{ Request::is('profile') ? 'active' : '' }}"
+                       href="{{ route('profile') }}"><span class="material-symbols-outlined">
                                 account_circle
                             </span>
                         <span class="text-menu"> Profile</span>
