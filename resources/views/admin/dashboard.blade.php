@@ -268,7 +268,7 @@
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="d-provinsi" name="d-provinsi"
-                                               readonly placeholder="Provinsi" value="test">
+                                            readonly placeholder="Provinsi" value="test">
                                         <label for="d-provinsi" class="form-label">Provinsi</label>
                                     </div>
                                 </div>
@@ -276,31 +276,31 @@
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="d-kota" name="d-kota"
-                                               readonly placeholder="Kota">
+                                            readonly placeholder="Kota">
                                         <label for="d-kota" class="form-label">Kota</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="d-alamat" name="d-alamat" readonly
-                                       placeholder="alamat">
+                                    placeholder="alamat">
                                 <label for="d-alamat" class="form-label">Alamat</label>
                             </div>
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="d-lokasi" name="d-lokasi" readonly
-                                       placeholder="lokasi">
+                                    placeholder="lokasi">
                                 <label for="d-lokasi" class="form-label">Lokasi</label>
                             </div>
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="d-urlstreetview" name="d-urlstreetview"
-                                       readonly placeholder="urlstreetview">
+                                    readonly placeholder="urlstreetview">
                                 <label for="d-urlstreetview" class="form-label">URL Street View</label>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="d-tipe" name="d-tipe"
-                                               readonly placeholder="tipe">
+                                            readonly placeholder="tipe">
                                         <label for="d-tipe" class="form-label">Tipe</label>
                                     </div>
                                 </div>
@@ -308,7 +308,7 @@
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="d-posisi" name="d-posisi"
-                                               readonly placeholder="posisi">
+                                            readonly placeholder="posisi">
                                         <label for="d-posisi" class="form-label">Posisi</label>
                                     </div>
                                 </div>
@@ -316,15 +316,15 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="d-panjang"
-                                               readonly name="d-panjang" placeholder="0">
+                                        <input type="text" class="form-control" id="d-panjang" readonly
+                                            name="d-panjang" placeholder="0">
                                         <label for="d-panjang" class="form-label">Panjang/Tinggi</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="d-lebar" name="d-lebar"
-                                               readonly placeholder="0">
+                                            readonly placeholder="0">
                                         <label for="d-lebar" class="form-label">Lebar</label>
                                     </div>
                                 </div>
@@ -332,15 +332,15 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="d-sisi"
-                                               readonly name="d-sisi" placeholder="0">
+                                        <input type="text" class="form-control" id="d-sisi" readonly
+                                            name="d-sisi" placeholder="0">
                                         <label for="d-sisi" class="form-label">Sisi</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="d-trafik" name="d-trafik"
-                                               readonly placeholder="0">
+                                            readonly placeholder="0">
                                         <label for="d-trafik" class="form-label">Trafik</label>
                                     </div>
                                 </div>
@@ -357,7 +357,7 @@
                         <div class="tab-pane fade" id="pills-gambar1" role="tabpanel"
                             aria-labelledby="pills-gambar1-tab">
                             <div class="panel-gambar">
-                                <img src="" alt="item-image" id="vendor-image"/>
+                                <img src="" alt="item-image" id="vendor-image" />
                             </div>
                         </div>
                     </div>
@@ -382,7 +382,7 @@
         var modalChangeOrder = new bootstrap.Modal(document.getElementById('modalubahpesanan'));
         var modalDetail = new bootstrap.Modal(document.getElementById('modaldetail'));
 
-        $(function () {
+        $(function() {
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
@@ -400,7 +400,7 @@
                 ajax: {
                     type: 'GET',
                     url: path,
-                    'data': function (d) {
+                    'data': function(d) {
                         // d.area = $('#area').val();
                         // d.name = $('#name').val();
                     }
@@ -408,7 +408,7 @@
                 responsive: {
                     details: {
                         display: DataTable.Responsive.display.modal({
-                            header: function (row) {
+                            header: function(row) {
                                 var data = row.data();
                                 return 'Details for ' + data[0] + ' ' + data[1];
                             }
@@ -418,8 +418,7 @@
                         })
                     }
                 },
-                columns: [
-                    {
+                columns: [{
                         data: 'city.name',
                         name: 'city.name'
                     },
@@ -440,17 +439,17 @@
                         name: 'type.name',
                     }, {
                         data: null,
-                        render: function (data) {
+                        render: function(data) {
                             let status = '-';
                             switch (data['status_on_rent']) {
                                 case 'empty':
-                                    status = 'Kosong';
+                                    status = '<span class="pill-tersedia">Tersedia</span>';
                                     break;
                                 case 'will used':
-                                    status = 'Akan Disewa';
+                                    status = '<span class="pill-akandisewa">Akan disewa</span>';
                                     break;
                                 case 'used':
-                                    status = 'Disewa';
+                                    status = '<span class="pill-disewa">Disewa</span>';
                                     break;
                                 default:
                                     break;
@@ -459,7 +458,7 @@
                         }
                     }, {
                         data: null,
-                        render: function (data) {
+                        render: function(data) {
                             if (data['incoming_rent'] !== null) {
                                 let dateStart = new Date(data['incoming_rent']['start']);
                                 let dateEnd = new Date(data['incoming_rent']['end']);
@@ -479,16 +478,17 @@
                         }
                     }, {
                         data: null,
-                        render: function (data) {
+                        render: function(data) {
                             const id = data['id'];
                             return '<span class="d-flex gap-1">' +
                                 '<a class="btn-primary-sm btn-detail" data-id="' + id + '">Detail</a>' +
-                                '<a href="#" class="btn-warning-sm btn-change-order" data-id="' + id + '">Ubah Pesanan</a>\n' +
+                                '<a href="#" class="btn-warning-sm btn-change-order" data-id="' + id +
+                                '">Ubah Pesanan</a>\n' +
                                 '</span>'
                         }
                     },
                 ],
-                "fnDrawCallback": function () {
+                "fnDrawCallback": function() {
                     changeOrderEvent();
                     showDetailEvent();
                 }
@@ -574,7 +574,10 @@
             streetViewWrapper.append(data['url'])
             imageWrapper.attr('src', data['image3']);
 
-            const myLatLng = {lat: latitude, lng: longitude};
+            const myLatLng = {
+                lat: latitude,
+                lng: longitude
+            };
             map_container = new google.maps.Map(document.getElementById("main-map"), {
                 zoom: 15,
                 center: myLatLng,
@@ -586,7 +589,7 @@
         }
 
         function showDetailEvent() {
-            $('.btn-detail').on('click', function (e) {
+            $('.btn-detail').on('click', function(e) {
                 e.preventDefault();
                 let id = this.dataset.id;
                 getDataDetailHandler(id);
@@ -594,7 +597,7 @@
         }
 
         function changeOrderEvent() {
-            $('.btn-change-order').on('click', function (e) {
+            $('.btn-change-order').on('click', function(e) {
                 e.preventDefault();
                 let id = this.dataset.id;
                 getDataByIDHandler(id);
@@ -624,7 +627,7 @@
         }
 
         function saveOrderEvent() {
-            $('#btn-save-order').on('click', function (e) {
+            $('#btn-save-order').on('click', function(e) {
                 e.preventDefault();
                 Swal.fire({
                     title: "Konfirmasi!",
@@ -645,7 +648,7 @@
             });
         }
 
-        $(document).ready(function () {
+        $(document).ready(function() {
             generateTable();
             saveOrderEvent();
         });

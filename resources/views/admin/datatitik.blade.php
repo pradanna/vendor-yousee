@@ -27,54 +27,54 @@
                 </div>
                 <table id="tableTitik" class="table table-striped" style="width:100%">
                     <thead>
-                    <tr>
-                        <th>Area</th>
-                        <th>Alamat</th>
-                        <th>Panjang / Tinggi</th>
-                        <th>lebar</th>
-                        <th>type</th>
-                        <th>Status</th>
-                        {{-- status: sedang disewa / akan disewa / tersedia --}}
-                        <th>disewa tanggal</th>
-                        {{-- diisi jika status sedang disewa / nullable --}}
-                        <th>Action</th>
-                        {{-- detail, ubah status pesanan --}}
-                    </tr>
+                        <tr>
+                            <th>Area</th>
+                            <th>Alamat</th>
+                            <th>Panjang / Tinggi</th>
+                            <th>lebar</th>
+                            <th>type</th>
+                            <th>Status</th>
+                            {{-- status: sedang disewa / akan disewa / tersedia --}}
+                            <th>disewa tanggal</th>
+                            {{-- diisi jika status sedang disewa / nullable --}}
+                            <th>Action</th>
+                            {{-- detail, ubah status pesanan --}}
+                        </tr>
                     </thead>
                     <tbody>
-                    {{--                        <tr>--}}
-                    {{--                            <td>Kota Surakarta</td>--}}
-                    {{--                            <td>Jalan A Yani, Manahan, Banjarsari, Surakarta, Jawa Tengah</td>--}}
-                    {{--                            <td>5</td>--}}
-                    {{--                            <td>10</td>--}}
-                    {{--                            <td>Billboard</td>--}}
-                    {{--                            <td><span class="pill-bg disewa">disewa</span></td>--}}
-                    {{--                            <td>16 Januari 2023 - 30 februari 2025</td>--}}
-                    {{--                            <td><span class="d-flex gap-1"><a class="btn-primary-sm" data-bs-toggle="modal"--}}
-                    {{--                                        data-bs-target="#modaldetail">Detail</a>--}}
-                    {{--                                    <a class="btn-warning-sm" data-bs-toggle="modal" data-bs-target="#modalubahpesanan">Ubah--}}
-                    {{--                                        Pesanan</a>--}}
-                    {{--                                </span>--}}
-                    {{--                            </td>--}}
-                    {{--                        </tr>--}}
+                        {{--                        <tr> --}}
+                        {{--                            <td>Kota Surakarta</td> --}}
+                        {{--                            <td>Jalan A Yani, Manahan, Banjarsari, Surakarta, Jawa Tengah</td> --}}
+                        {{--                            <td>5</td> --}}
+                        {{--                            <td>10</td> --}}
+                        {{--                            <td>Billboard</td> --}}
+                        {{--                            <td><span class="pill-bg disewa">disewa</span></td> --}}
+                        {{--                            <td>16 Januari 2023 - 30 februari 2025</td> --}}
+                        {{--                            <td><span class="d-flex gap-1"><a class="btn-primary-sm" data-bs-toggle="modal" --}}
+                        {{--                                        data-bs-target="#modaldetail">Detail</a> --}}
+                        {{--                                    <a class="btn-warning-sm" data-bs-toggle="modal" data-bs-target="#modalubahpesanan">Ubah --}}
+                        {{--                                        Pesanan</a> --}}
+                        {{--                                </span> --}}
+                        {{--                            </td> --}}
+                        {{--                        </tr> --}}
 
                     </tbody>
                     <tfoot>
-                    <tr>
-                        <th>Area</th>
-                        <th>Alamat</th>
-                        <th>Panjang / Tinggi</th>
-                        <th>lebar</th>
-                        <th>type</th>
-                        <th>Status</th>
-                        {{-- status: sedang disewa / akan disewa / tersedia --}}
-                        <th>disewa tanggal</th>
-                        {{-- diisi jika status sedang disewa / nullable --}}
-                        <th>
-                            Action
-                        </th>
-                        {{-- detail, ubah status pesanan --}}
-                    </tr>
+                        <tr>
+                            <th>Area</th>
+                            <th>Alamat</th>
+                            <th>Panjang / Tinggi</th>
+                            <th>lebar</th>
+                            <th>type</th>
+                            <th>Status</th>
+                            {{-- status: sedang disewa / akan disewa / tersedia --}}
+                            <th>disewa tanggal</th>
+                            {{-- diisi jika status sedang disewa / nullable --}}
+                            <th>
+                                Action
+                            </th>
+                            {{-- detail, ubah status pesanan --}}
+                        </tr>
                     </tfoot>
                 </table>
             </div>
@@ -82,8 +82,7 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="modalubahpesanan" tabindex="-1" aria-labelledby="modalubahpesananLabel"
-         aria-hidden="true">
+    <div class="modal fade" id="modalubahpesanan" tabindex="-1" aria-labelledby="modalubahpesananLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -143,20 +142,20 @@
                     <ul class="nav nav-pills mb-3" id="pills-tab-detail" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link genostab active" id="pills-detail-tab" data-bs-toggle="pill"
-                                    data-bs-target="#pills-detail" type="button" role="tab" aria-controls="pills-detail"
-                                    aria-selected="true">Detail
+                                data-bs-target="#pills-detail" type="button" role="tab" aria-controls="pills-detail"
+                                aria-selected="true">Detail
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link genostab" id="pills-maps-tab-detail" data-bs-toggle="pill"
-                                    data-bs-target="#pills-maps" type="button" role="tab" aria-controls="pills-maps"
-                                    aria-selected="false">Maps
+                                data-bs-target="#pills-maps" type="button" role="tab" aria-controls="pills-maps"
+                                aria-selected="false">Maps
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link genostab" id="pills-gambar1-tab" data-bs-toggle="pill"
-                                    data-bs-target="#pills-gambar1" type="button" role="tab"
-                                    aria-controls="pills-gambar1" aria-selected="false">Gambar
+                                data-bs-target="#pills-gambar1" type="button" role="tab"
+                                aria-controls="pills-gambar1" aria-selected="false">Gambar
                             </button>
                         </li>
 
@@ -164,13 +163,13 @@
 
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-detail" role="tabpanel"
-                             aria-labelledby="pills-detail-tab">
+                            aria-labelledby="pills-detail-tab">
                             <div class="row">
                                 <input type="hidden" id="d-id" name="d-id">
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="d-provinsi" name="d-provinsi"
-                                               readonly placeholder="Provinsi" value="test">
+                                            readonly placeholder="Provinsi" value="test">
                                         <label for="d-provinsi" class="form-label">Provinsi</label>
                                     </div>
                                 </div>
@@ -178,31 +177,31 @@
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="d-kota" name="d-kota"
-                                               readonly placeholder="Kota">
+                                            readonly placeholder="Kota">
                                         <label for="d-kota" class="form-label">Kota</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="d-alamat" name="d-alamat" readonly
-                                       placeholder="alamat">
+                                    placeholder="alamat">
                                 <label for="d-alamat" class="form-label">Alamat</label>
                             </div>
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="d-lokasi" name="d-lokasi" readonly
-                                       placeholder="lokasi">
+                                    placeholder="lokasi">
                                 <label for="d-lokasi" class="form-label">Lokasi</label>
                             </div>
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="d-urlstreetview" name="d-urlstreetview"
-                                       readonly placeholder="urlstreetview">
+                                    readonly placeholder="urlstreetview">
                                 <label for="d-urlstreetview" class="form-label">URL Street View</label>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="d-tipe" name="d-tipe"
-                                               readonly placeholder="tipe">
+                                            readonly placeholder="tipe">
                                         <label for="d-tipe" class="form-label">Tipe</label>
                                     </div>
                                 </div>
@@ -210,7 +209,7 @@
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="d-posisi" name="d-posisi"
-                                               readonly placeholder="posisi">
+                                            readonly placeholder="posisi">
                                         <label for="d-posisi" class="form-label">Posisi</label>
                                     </div>
                                 </div>
@@ -218,15 +217,15 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="d-panjang"
-                                               readonly name="d-panjang" placeholder="0">
+                                        <input type="text" class="form-control" id="d-panjang" readonly
+                                            name="d-panjang" placeholder="0">
                                         <label for="d-panjang" class="form-label">Panjang/Tinggi</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="d-lebar" name="d-lebar"
-                                               readonly placeholder="0">
+                                            readonly placeholder="0">
                                         <label for="d-lebar" class="form-label">Lebar</label>
                                     </div>
                                 </div>
@@ -234,15 +233,15 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="d-sisi"
-                                               readonly name="d-sisi" placeholder="0">
+                                        <input type="text" class="form-control" id="d-sisi" readonly
+                                            name="d-sisi" placeholder="0">
                                         <label for="d-sisi" class="form-label">Sisi</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="d-trafik" name="d-trafik"
-                                               readonly placeholder="0">
+                                            readonly placeholder="0">
                                         <label for="d-trafik" class="form-label">Trafik</label>
                                     </div>
                                 </div>
@@ -259,9 +258,9 @@
 
                         </div>
                         <div class="tab-pane fade" id="pills-gambar1" role="tabpanel"
-                             aria-labelledby="pills-gambar1-tab">
+                            aria-labelledby="pills-gambar1-tab">
                             <div class="panel-gambar">
-                                <img src="" alt="item-image" id="vendor-image"/>
+                                <img src="" alt="item-image" id="vendor-image" />
                             </div>
                         </div>
                     </div>
@@ -294,7 +293,7 @@
                 ajax: {
                     type: 'GET',
                     url: path,
-                    'data': function (d) {
+                    'data': function(d) {
                         // d.area = $('#area').val();
                         // d.name = $('#name').val();
                     }
@@ -302,7 +301,7 @@
                 responsive: {
                     details: {
                         display: DataTable.Responsive.display.modal({
-                            header: function (row) {
+                            header: function(row) {
                                 var data = row.data();
                                 return 'Details for ' + data[0] + ' ' + data[1];
                             }
@@ -312,8 +311,7 @@
                         })
                     }
                 },
-                columns: [
-                    {
+                columns: [{
                         data: 'city.name',
                         name: 'city.name'
                     },
@@ -334,25 +332,25 @@
                         name: 'type.name',
                     }, {
                         data: null,
-                        render: function (data) {
+                        render: function(data) {
 
                             if (data['rent'] !== null) {
                                 let dateStart = new Date(data['rent']['start']);
                                 let dateEnd = new Date(data['rent']['end']);
                                 let now = new Date();
                                 if (now > dateStart && now < dateEnd) {
-                                    return 'Disewa';
+                                    return '<span class="pill-disewa">Disewa</span>';
                                 }
 
                                 if (now < dateStart) {
-                                    return 'Akan Disewa';
+                                    return '<span class="pill-akandisewa">Akan disewa</span>';
                                 }
                             }
-                            return 'Kosong'
+                            return '<span class="pill-tersedia">Tersedia</span>';
                         }
                     }, {
                         data: null,
-                        render: function (data) {
+                        render: function(data) {
                             if (data['rent'] !== null) {
                                 let dateStart = new Date(data['rent']['start']);
                                 let dateEnd = new Date(data['rent']['end']);
@@ -372,16 +370,17 @@
                         }
                     }, {
                         data: null,
-                        render: function (data) {
+                        render: function(data) {
                             const id = data['id'];
                             return '<span class="d-flex gap-1">' +
                                 '<a class="btn-primary-sm btn-detail" data-id="' + id + '">Detail</a>' +
-                                '<a href="#" class="btn-warning-sm btn-change-order" data-id="' + id + '">Ubah Pesanan</a>\n' +
+                                '<a href="#" class="btn-warning-sm btn-change-order" data-id="' + id +
+                                '">Ubah Pesanan</a>\n' +
                                 '</span>'
                         }
                     },
                 ],
-                "fnDrawCallback": function () {
+                "fnDrawCallback": function() {
                     changeOrderEvent();
                     showDetailEvent();
                 }
@@ -468,7 +467,10 @@
             streetViewWrapper.append(data['url'])
             imageWrapper.attr('src', data['image3']);
 
-            const myLatLng = {lat: latitude, lng: longitude};
+            const myLatLng = {
+                lat: latitude,
+                lng: longitude
+            };
             map_container = new google.maps.Map(document.getElementById("main-map"), {
                 zoom: 15,
                 center: myLatLng,
@@ -503,7 +505,7 @@
 
 
         function showDetailEvent() {
-            $('.btn-detail').on('click', function (e) {
+            $('.btn-detail').on('click', function(e) {
                 e.preventDefault();
                 let id = this.dataset.id;
                 getDataDetailHandler(id);
@@ -511,7 +513,7 @@
         }
 
         function changeOrderEvent() {
-            $('.btn-change-order').on('click', function (e) {
+            $('.btn-change-order').on('click', function(e) {
                 e.preventDefault();
                 let id = this.dataset.id;
                 getDataByIDHandler(id);
@@ -519,7 +521,7 @@
         }
 
         function saveOrderEvent() {
-            $('#btn-save-order').on('click', function (e) {
+            $('#btn-save-order').on('click', function(e) {
                 e.preventDefault();
                 Swal.fire({
                     title: "Konfirmasi!",
@@ -540,7 +542,7 @@
             });
         }
 
-        $(function () {
+        $(function() {
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
@@ -548,7 +550,7 @@
             });
         });
 
-        $(document).ready(function () {
+        $(document).ready(function() {
             generateTable();
             saveOrderEvent();
         });
