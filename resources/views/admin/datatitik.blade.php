@@ -25,7 +25,7 @@
                 <div class="title-container">
                     <p class="title">Data Titik Anda</p>
                 </div>
-                <table id="tableTitik" class="table table-striped" style="width:100%">
+                <table id="tableTitik" class="table table-striped nowrap" style="width:100%">
                     <thead>
                         <tr>
                             <th>Area</th>
@@ -298,19 +298,7 @@
                         // d.name = $('#name').val();
                     }
                 },
-                responsive: {
-                    details: {
-                        display: DataTable.Responsive.display.modal({
-                            header: function(row) {
-                                var data = row.data();
-                                return 'Details for ' + data[0] + ' ' + data[1];
-                            }
-                        }),
-                        renderer: DataTable.Responsive.renderer.tableAll({
-                            tableClass: 'table'
-                        })
-                    }
-                },
+                responsive: true,
                 columns: [{
                         data: 'city.name',
                         name: 'city.name'

@@ -344,6 +344,7 @@ body {
   padding: 16px;
   flex: 1;
   min-width: 300px;
+  cursor: pointer;
 }
 .admin .gen-body .gen-content .dashboard .status-container .card-status .content {
   display: flex;
@@ -420,9 +421,6 @@ body {
   color: #642aed;
   font-weight: bold;
   transition: all 100ms ease-in-out;
-}
-.admin .gen-body .gen-content .dashboard .status-container a:hover {
-  font-weight: 400;
 }
 .admin .gen-body .gen-content .dashboard .menu-container {
   display: flex;
