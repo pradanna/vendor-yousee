@@ -81,25 +81,27 @@
         </div>
 
         <div class="card-container">
-            <p class="title">Data Titik Anda</p>
 
-            <div class="card">
-                <div class="card-content">
-                    <img src="{{ asset('images/local/login.jpg') }}" />
-                    <div>
-                        <p>alamat</p>
-                        <p>lokasi</p>
-                        <p>Status</p>
-                        <p>Tanggal Terpakai</p>
+            @for ($i = 0; $i < 20; $i++)
+                <div class="card">
+                    <div class="card-content">
+                        <img src="{{ asset('images/local/login.jpg') }}" />
+                        <div>
+                            <p class="fw-bold">KOTA SURAKARTA</p>
+                            <p class="text-grey">Jalan A Yani, Manahan, Banjarsari, Surakarta, Jawa Tengah</p>
+                            <span class="status disewa">Disewa</span>
+                            <p>disewa sampai 17 Mar 2024</p>
 
+                        </div>
+                    </div>
+                    <div class="btn-container">
+                        <a class="btn sewa">Disewa</a>
+                        <a class="btn akandisewa">Akan Disewa</a>
+                        <a class="btn tersedia">Tersedia</a>
                     </div>
                 </div>
-                <div>
-                    <a>Tombol 1</a>
-                    <a>Tombol 2</a>
-                    <a>Tombol 3</a>
-                </div>
-            </div>
+            @endfor
+
         </div>
 
 

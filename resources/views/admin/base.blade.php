@@ -42,6 +42,16 @@
 </head>
 
 <body>
+    <p class="title">Data Titik Anda</p>
+
+    <div class="search-field">
+        <span class="material-symbols-outlined text-grey">
+            search
+        </span>
+        <input type="text" placeholder="Pencarian Titik" />
+
+    </div>
+
     <div class="d-flex admin ">
         {{-- SIDEBAR --}}
         <div class="sidebar ">
@@ -92,6 +102,7 @@
         </div>
         {{-- BODY --}}
         <div class="gen-body  ">
+
             {{-- BOTTOMBAR --}}
             <div class="bottombar">
                 <a href="{{ route('dashboard') }}"
@@ -156,6 +167,7 @@
                 </div>
             </div>
             {{-- CONTENT --}}
+
             <div class="gen-content">
                 @yield('content')
             </div>
@@ -164,6 +176,7 @@
             </div>
         </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
