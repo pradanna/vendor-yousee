@@ -815,6 +815,21 @@ input.form-control {
   font-size: 0.8rem;
 }
 
+.card .card-content {
+  padding: 8px;
+  display: flex;
+  gap: 8px;
+  align-items: start;
+}
+.card .card-content p {
+  margin-bottom: 0;
+}
+.card .card-content img {
+  width: 90px;
+  -o-object-fit: scale-down;
+     object-fit: scale-down;
+}
+
 @media only screen and (max-width: 580px) {
   .admin .sidebar {
     display: none;

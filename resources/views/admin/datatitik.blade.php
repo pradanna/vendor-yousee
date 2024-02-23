@@ -79,6 +79,30 @@
                 </table>
             </div>
         </div>
+
+        <div class="card-container">
+            <p class="title">Data Titik Anda</p>
+
+            <div class="card">
+                <div class="card-content">
+                    <img src="{{ asset('images/local/login.jpg') }}" />
+                    <div>
+                        <p>alamat</p>
+                        <p>lokasi</p>
+                        <p>Status</p>
+                        <p>Tanggal Terpakai</p>
+
+                    </div>
+                </div>
+                <div>
+                    <a>Tombol 1</a>
+                    <a>Tombol 2</a>
+                    <a>Tombol 3</a>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 
     <!-- Modal -->
