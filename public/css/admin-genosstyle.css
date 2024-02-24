@@ -441,6 +441,12 @@ body {
   box-shadow: 0px 1px 5px #eee;
   padding: 16px;
   flex: 1;
+  color: black;
+}
+.admin .gen-body .gen-content .dashboard .menu-container .menu.notification {
+  background: rgb(209, 206, 251);
+  background: linear-gradient(133deg, rgb(209, 206, 251) 0%, rgb(49, 90, 249) 0%, rgb(12, 196, 207) 90%, rgb(23, 139, 170) 100%);
+  color: white !important;
 }
 .admin .gen-body .gen-content .dashboard .menu-container .menu .title-container {
   display: flex;
@@ -623,6 +629,32 @@ body {
 }
 .admin .btn-warning-sm:hover {
   background-color: #e9971d;
+}
+.admin .btn-danger-sm {
+  all: unset;
+  cursor: pointer;
+  background-color: #ff6347;
+  padding: 3px 10px;
+  border-radius: 5px;
+  color: white;
+  transition: all 300ms ease-in-out;
+  font-weight: bold;
+}
+.admin .btn-danger-sm:hover {
+  background-color: #e7553b;
+}
+.admin .btn-success-sm {
+  all: unset;
+  cursor: pointer;
+  background-color: #9ade7b;
+  padding: 3px 10px;
+  border-radius: 5px;
+  color: white;
+  transition: all 300ms ease-in-out;
+  font-weight: bold;
+}
+.admin .btn-success-sm:hover {
+  background-color: #7ec45e;
 }
 .admin .breadcrumb-item a {
   all: unset !important;
@@ -819,35 +851,19 @@ input.form-control {
   font-size: 0.8rem;
 }
 
-.search-field {
-  display: flex;
-  background-color: white;
-  border-radius: 50px;
-  justify-content: start;
-  width: 100%;
-  padding: 10px;
-  gap: 10px;
-  position: sticky;
-  top: 0;
-  margin-bottom: 20px;
-}
-.search-field input {
-  border: none;
-  flex: 1;
-}
-.search-field input:focus {
-  border: none;
-}
-.search-field input:focus:focus-visible {
-  border: none;
-  outline: none !important;
-}
-
 .card-container {
   position: sticky;
   top: 0;
 }
-.card-container .search-field {
+.card-container .search-wrapper {
+  padding: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #eff2f4;
+  width: 100%;
+}
+.card-container .search-wrapper .search-field {
   display: flex;
   background-color: white;
   border-radius: 50px;
@@ -855,18 +871,15 @@ input.form-control {
   width: 100%;
   padding: 10px;
   gap: 10px;
-  position: sticky;
-  top: 0;
-  margin-bottom: 20px;
 }
-.card-container .search-field input {
+.card-container .search-wrapper .search-field input {
   border: none;
   flex: 1;
 }
-.card-container .search-field input:focus {
+.card-container .search-wrapper .search-field input:focus {
   border: none;
 }
-.card-container .search-field input:focus:focus-visible {
+.card-container .search-wrapper .search-field input:focus:focus-visible {
   border: none;
   outline: none !important;
 }
@@ -912,7 +925,7 @@ input.form-control {
 }
 .card-container .card .btn-container {
   display: flex;
-  justify-content: center;
+  justify-content: end;
   gap: 10px;
 }
 .card-container .card .btn-container .btn {
@@ -934,8 +947,45 @@ input.form-control {
   background-color: #9ade7b;
 }
 
+.card-container {
+  display: none;
+}
+
+.table-titik {
+  display: block;
+}
+
 @media only screen and (max-width: 580px) {
+  .table-titik {
+    display: none !important;
+  }
+  .card-container {
+    display: block !important;
+  }
+  .admin {
+    height: 100vh !important;
+  }
   .admin .sidebar {
+    display: none;
+  }
+  .admin .gen-body {
+    height: 100%; /* Adjust height as needed */
+    overflow-y: auto; /* Enable scrolling if content exceeds height */
+  }
+  .admin .gen-body .gen-content .dashboard {
+    padding: 6px !important;
+  }
+  .admin .gen-body .gen-content .dashboard .menu-container .menu {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .admin .gen-body .gen-content .dashboard .status-container .card-status {
+    height: 50px;
+  }
+  .admin .gen-body .gen-content .dashboard .status-container .card-status .report {
+    display: none !important;
+  }
+  .admin .gen-body .gen-nav {
     display: none;
   }
   .admin .gen-body .gen-nav .start .nav-button {

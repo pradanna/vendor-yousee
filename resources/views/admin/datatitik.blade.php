@@ -3,14 +3,14 @@
 @section('content')
     <div class="dashboard">
         <div class="menu-container">
-            <div class="menu d-flex justify-content-between ">
+            <div class="menu d-flex justify-content-between notification">
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="me-5">
                     <ol class="breadcrumb mb-0 ">
                         <li class="breadcrumb-item "><a href="#">Data Titik</a></li>
                     </ol>
                 </nav>
 
-                <div class="d-flex align-items-center " style="color: gray">
+                <div class="d-flex align-items-center ">
                     <span class="material-symbols-outlined me-2 ">
                         error
                     </span><span>Jika ada titik yang belum tercatat di system, silahkan hubungi admin</span>
@@ -20,7 +20,7 @@
 
         </div>
 
-        <div class="menu-container">
+        <div class="menu-container table-titik">
             <div class="menu overflow-hidden">
                 <div class="title-container">
                     <p class="title">Data Titik Anda</p>
@@ -80,8 +80,17 @@
             </div>
         </div>
 
-        <div class="card-container">
+        <div class="card-container  ">
 
+            <div class="search-wrapper">
+                <div class="search-field">
+                    <span class="material-symbols-outlined text-grey">
+                        search
+                    </span>
+                    <input type="text" placeholder="Pencarian Titik" />
+
+                </div>
+            </div>
             @for ($i = 0; $i < 20; $i++)
                 <div class="card">
                     <div class="card-content">
@@ -168,8 +177,8 @@
                     <ul class="nav nav-pills mb-3" id="pills-tab-detail" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link genostab active" id="pills-detail-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-detail" type="button" role="tab" aria-controls="pills-detail"
-                                aria-selected="true">Detail
+                                data-bs-target="#pills-detail" type="button" role="tab"
+                                aria-controls="pills-detail" aria-selected="true">Detail
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
@@ -388,8 +397,12 @@
                             const id = data['id'];
                             return '<span class="d-flex gap-1">' +
                                 '<a class="btn-primary-sm btn-detail" data-id="' + id + '">Detail</a>' +
+                                '<a href="#" class="btn-danger-sm btn-change-order" data-id="' + id +
+                                '">Disewa</a>\n' +
                                 '<a href="#" class="btn-warning-sm btn-change-order" data-id="' + id +
-                                '">Ubah Pesanan</a>\n' +
+                                '">Akan Disewa</a>\n' +
+                                '<a href="#" class="btn-success-sm btn-change-order" data-id="' + id +
+                                '">Tersedia</a>\n' +
                                 '</span>'
                         }
                     },

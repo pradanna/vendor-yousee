@@ -112,11 +112,11 @@
 
         </div>
 
-        {{-- Titik disewa --}}
-        <div class="menu-container  ">
+        {{-- Titik anda --}}
+        <div class="menu-container  table-titik">
             <div class="menu overflow-hidden">
                 <div class="title-container">
-                    <p class="title">Titik yang sedang disewa</p>
+                    <p class="title">Titik Anda</p>
                 </div>
                 <table id="tableTitik" class="table table-striped nowrap " style="width:100%">
                     <thead>
@@ -172,6 +172,39 @@
                 </table>
 
             </div>
+
+        </div>
+
+        <div class="card-container  ">
+
+            <div class="search-wrapper">
+                <div class="search-field">
+                    <span class="material-symbols-outlined text-grey">
+                        search
+                    </span>
+                    <input type="text" placeholder="Pencarian Titik" />
+
+                </div>
+            </div>
+            @for ($i = 0; $i < 20; $i++)
+                <div class="card">
+                    <div class="card-content">
+                        <img src="{{ asset('images/local/login.jpg') }}" />
+                        <div>
+                            <p class="fw-bold">KOTA SURAKARTA</p>
+                            <p class="text-grey">Jalan A Yani, Manahan, Banjarsari, Surakarta, Jawa Tengah</p>
+                            <span class="status disewa">Disewa</span>
+                            <p>disewa sampai 17 Mar 2024</p>
+
+                        </div>
+                    </div>
+                    <div class="btn-container">
+                        <a class="btn sewa">Disewa</a>
+                        <a class="btn akandisewa">Akan Disewa</a>
+                        <a class="btn tersedia">Tersedia</a>
+                    </div>
+                </div>
+            @endfor
 
         </div>
     </div>

@@ -544,12 +544,24 @@ body {
           margin-bottom: 5px;
 
           .menu {
+            &.notification {
+              background: rgb(209, 206, 251);
+              background: linear-gradient(
+                133deg,
+                rgba(209, 206, 251, 1) 0%,
+                rgba(49, 90, 249, 1) 0%,
+                rgba(12, 196, 207, 1) 90%,
+                rgba(23, 139, 170, 1) 100%
+              );
+              color: white !important;
+            }
             justify-content: space-between;
             background-color: white;
             border-radius: 10px;
             box-shadow: 0px 1px 5px #eee;
             padding: 16px;
             flex: 1;
+            color: black;
             .title-container {
               display: flex;
               justify-content: space-between;
@@ -774,6 +786,34 @@ body {
     font-weight: bold;
     &:hover {
       background-color: #e9971d;
+    }
+  }
+
+  .btn-danger-sm {
+    all: unset;
+    cursor: pointer;
+    background-color: #ff6347;
+    padding: 3px 10px;
+    border-radius: 5px;
+    color: white;
+    transition: all 300ms ease-in-out;
+    font-weight: bold;
+    &:hover {
+      background-color: #e7553b;
+    }
+  }
+
+  .btn-success-sm {
+    all: unset;
+    cursor: pointer;
+    background-color: #9ade7b;
+    padding: 3px 10px;
+    border-radius: 5px;
+    color: white;
+    transition: all 300ms ease-in-out;
+    font-weight: bold;
+    &:hover {
+      background-color: #7ec45e;
     }
   }
 
@@ -1009,56 +1049,38 @@ input.form-control {
   font-size: 0.8rem;
 }
 
-.search-field {
-  display: flex;
-  background-color: white;
-  border-radius: 50px;
-  justify-content: start;
-  width: 100%;
-  padding: 10px;
-  gap: 10px;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  margin-bottom: 20px;
-  input {
-    border: none;
-    flex: 1;
-    &:focus {
-      border: none;
-    }
-    &:focus:focus-visible {
-      border: none;
-      outline: none !important;
-    }
-  }
-}
-
 .card-container {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  .search-field {
-    display: flex;
-    background-color: white;
-    border-radius: 50px;
-    justify-content: start;
-    width: 100%;
+
+  .search-wrapper {
     padding: 10px;
-    gap: 10px;
     position: -webkit-sticky;
     position: sticky;
     top: 0;
-    margin-bottom: 20px;
-    input {
-      border: none;
-      flex: 1;
-      &:focus {
+    z-index: 10;
+    background-color: #eff2f4;
+    width: 100%;
+    .search-field {
+      display: flex;
+      background-color: white;
+      border-radius: 50px;
+      justify-content: start;
+      width: 100%;
+      padding: 10px;
+      gap: 10px;
+
+      input {
         border: none;
-      }
-      &:focus:focus-visible {
-        border: none;
-        outline: none !important;
+        flex: 1;
+        &:focus {
+          border: none;
+        }
+        &:focus:focus-visible {
+          border: none;
+          outline: none !important;
+        }
       }
     }
   }
@@ -1111,7 +1133,7 @@ input.form-control {
 
     .btn-container {
       display: flex;
-      justify-content: center;
+      justify-content: end;
       gap: 10px;
       .btn {
         all: unset;
@@ -1136,15 +1158,55 @@ input.form-control {
     }
   }
 }
+.card-container {
+  display: none;
+}
+.table-titik {
+  display: block;
+}
 
 @media only screen and (max-width: 580px) {
+  .table-titik {
+    display: none !important;
+  }
+
+  .card-container {
+    display: block !important;
+  }
   .admin {
+    height: 100vh !important;
     .sidebar {
       display: none;
     }
 
     .gen-body {
+      height: 100%; /* Adjust height as needed */
+      overflow-y: auto; /* Enable scrolling if content exceeds height */
+
+      .gen-content {
+        .dashboard {
+          padding: 6px !important;
+
+          .menu-container {
+            .menu {
+              flex-wrap: wrap;
+              gap: 20px;
+            }
+          }
+
+          .status-container {
+            .card-status {
+              height: 50px;
+
+              .report {
+                display: none !important;
+              }
+            }
+          }
+        }
+      }
       .gen-nav {
+        display: none;
         .start {
           .nav-button {
             display: none;

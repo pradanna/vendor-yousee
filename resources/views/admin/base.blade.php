@@ -42,15 +42,7 @@
 </head>
 
 <body>
-    <p class="title">Data Titik Anda</p>
 
-    <div class="search-field">
-        <span class="material-symbols-outlined text-grey">
-            search
-        </span>
-        <input type="text" placeholder="Pencarian Titik" />
-
-    </div>
 
     <div class="d-flex admin ">
         {{-- SIDEBAR --}}
