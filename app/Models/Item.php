@@ -11,6 +11,11 @@ class Item extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'status_rent',
+        'rent_until'
+    ];
+
     public function type()
     {
         return $this->belongsTo(Type::class, 'type_id');
