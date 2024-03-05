@@ -7,6 +7,7 @@ use App\Models\Item;
 use App\Models\ItemRent;
 use App\Models\Vendor;
 use Carbon\Carbon;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
@@ -28,7 +29,13 @@ class ItemController extends CustomController
             ]);
         if (\request()->ajax()) {
             try {
+                $queryParam = \request()->query->get('q');
                 $data = Item::with(['type', 'city', 'rent'])
+                    ->where(function ($q) use ($queryParam){
+                        /** @var Builder $q */
+                        return $q->where('address', 'LIKE', '%' . $queryParam . '%')
+                            ->orWhere('location', 'LIKE', '%' . $queryParam . '%');
+                    })
                     ->get();
                 return $this->jsonSuccessResponse('success', $data);
             } catch (\Exception $e) {
@@ -78,7 +85,7 @@ class ItemController extends CustomController
                 ->first();
             $data_request = [
                 'status_rent' => \request()->request->get('status'),
-//                'rent_until' => \request()->request->get('date')
+                'rent_until' => \request()->request->get('date')
             ];
             $item->update($data_request);
             return $this->jsonSuccessResponse('success', $data_request);

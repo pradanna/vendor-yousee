@@ -86,33 +86,12 @@
                     <span class="material-symbols-outlined text-grey">
                         search
                     </span>
-                    <input type="text" placeholder="Pencarian Titik"/>
+                    <input type="text" placeholder="Pencarian Titik" id="txt-search"/>
 
                 </div>
             </div>
-            <div id="result-wrapper" class="w-100">
-
+            <div id="result-wrapper" class="w-100 row p-3" style="gap: 0.5rem">
             </div>
-{{--            @for ($i = 0; $i < 20; $i++)--}}
-{{--                <div class="card">--}}
-{{--                    <div class="card-content">--}}
-{{--                        <img src="{{ asset('images/local/login.jpg') }}"/>--}}
-{{--                        <div>--}}
-{{--                            <p class="fw-bold">KOTA SURAKARTA</p>--}}
-{{--                            <p class="text-grey">Jalan A Yani, Manahan, Banjarsari, Surakarta, Jawa Tengah</p>--}}
-{{--                            <span class="status disewa">Disewa</span>--}}
-{{--                            <p>disewa sampai 17 Mar 2024</p>--}}
-
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="btn-container">--}}
-{{--                        <a class="btn sewa">Disewa</a>--}}
-{{--                        <a class="btn akandisewa">Akan Disewa</a>--}}
-{{--                        <a class="btn tersedia">Tersedia</a>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            @endfor--}}
-
         </div>
 
 
@@ -124,39 +103,39 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalubahpesananLabel">Ubah Pesanan</h5>
+                    <h5 class="modal-title" id="modalubahpesananLabel">Tanggal Pemakaian</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <input type="hidden" id="txt-id" value="">
-                    <div style="border-radius: 5px; border: 1px solid #eee; padding: 10px " class="mb-3">
-                        <div class="d-flex justify-content-between ">
-                            <div class="info-titik">
-                                <div class="mb-2">
-                                    <span class="title">Kota</span> <br>
-                                    <span id="lbl-city">-</span>
-                                </div>
-                                <div>
-                                    <span class="title">Alamat</span> <br>
-                                    <span id="lbl-address">-</span>
-                                </div>
-                            </div>
-                            <div>
-                                <span class="pill-bg disewa" id="lbl-status">Kosong</span>
-                            </div>
-                        </div>
-                    </div>
+                    {{--                    <div style="border-radius: 5px; border: 1px solid #eee; padding: 10px " class="mb-3">--}}
+                    {{--                        <div class="d-flex justify-content-between ">--}}
+                    {{--                            <div class="info-titik">--}}
+                    {{--                                <div class="mb-2">--}}
+                    {{--                                    <span class="title">Kota</span> <br>--}}
+                    {{--                                    <span id="lbl-city">-</span>--}}
+                    {{--                                </div>--}}
+                    {{--                                <div>--}}
+                    {{--                                    <span class="title">Alamat</span> <br>--}}
+                    {{--                                    <span id="lbl-address">-</span>--}}
+                    {{--                                </div>--}}
+                    {{--                            </div>--}}
+                    {{--                            <div>--}}
+                    {{--                                <span class="pill-bg disewa" id="lbl-status">Kosong</span>--}}
+                    {{--                            </div>--}}
+                    {{--                        </div>--}}
+                    {{--                    </div>--}}
 
                     <form class="mb-3">
-                        <div class="mb-3">
-                            <label for="startDate" class="label-input">Disewa dari tanggal</label>
-                            <input id="startDate" class="form-control" type="date"/>
-                            <span id="startDateSelected"></span>
-                        </div>
+                        {{--                        <div class="mb-3">--}}
+                        {{--                            <label for="startDate" class="label-input">Disewa dari tanggal</label>--}}
+                        {{--                            <input id="startDate" class="form-control" type="date"/>--}}
+                        {{--                            <span id="startDateSelected"></span>--}}
+                        {{--                        </div>--}}
                         <div class="mb-3">
                             <label for="endDate" class="label-input">Sampai tanggal</label>
                             <input id="endDate" class="form-control" type="date"/>
-                            <span id="endDateSelected"></span>
+                            {{--                            <span id="endDateSelected"></span>--}}
                         </div>
                         <div>
                             <a href="#" id="btn-save-order" class="bt-primary full">Submit</a>
@@ -310,6 +289,16 @@
 
 @section('css')
     <script src="{{ asset('js/map-control.js?v=2') }}"></script>
+    <style>
+        .table-titik {
+            display: none !important;
+        }
+
+        .card-container {
+            display: block !important;
+            cursor: pointer;
+        }
+    </style>
 @endsection
 @section('morejs')
     <script
@@ -317,10 +306,10 @@
         async></script>
     <script src="{{ asset('/js/item-control.js') }}"></script>
     <script>
-        var path = '/{{ request()->path() }}';
+        var itemPath = '/{{ request()->path() }}';
         var table;
-        var modalChangeOrder = new bootstrap.Modal(document.getElementById('modalubahpesanan'));
-        var modalDetail = new bootstrap.Modal(document.getElementById('modaldetail'));
+        // var modalChangeOrder = new bootstrap.Modal(document.getElementById('modalubahpesanan'));
+        // var modalDetail = new bootstrap.Modal(document.getElementById('modaldetail'));
 
         function generateTable() {
             table = $('#tableTitik').DataTable({
@@ -421,158 +410,6 @@
         let startDate = document.getElementById('startDate')
         let endDate = document.getElementById('endDate')
 
-        startDate.addEventListener('change', (e) => {
-            let startDateVal = e.target.value
-            document.getElementById('startDateSelected').innerText = startDateVal
-        })
-
-        endDate.addEventListener('change', (e) => {
-            let endDateVal = e.target.value
-            document.getElementById('endDateSelected').innerText = endDateVal
-        })
-
-        async function getDataByIDHandler(id) {
-            try {
-                let url = path + '/' + id;
-                let response = await $.get(url);
-                console.log(response);
-                let dataRent = response['data']['rent'];
-                const city = response['data']['city']['name'];
-                const address = response['data']['address'];
-                let rentStatusString = 'Kosong';
-
-                if (dataRent !== null) {
-                    let dateStart = new Date(dataRent['start']);
-                    let dateEnd = new Date(dataRent['end']);
-                    let now = new Date();
-                    if (now > dateStart && now < dateEnd) {
-                        rentStatusString = 'Disewa';
-                    }
-
-                    if (now < dateStart) {
-                        rentStatusString = 'Akan Disewa';
-                    }
-                }
-                $('#txt-id').val(id);
-                $('#lbl-city').html(city);
-                $('#lbl-address').html(address);
-                $('#lbl-status').html(rentStatusString);
-                modalChangeOrder.show();
-            } catch (e) {
-                let error_message = JSON.parse(e.responseText);
-                alert(error_message.message)
-            }
-        }
-
-        async function getDataDetailHandler(id) {
-            try {
-                let url = path + '/' + id;
-                let response = await $.get(url);
-                let data = response['data']
-                console.log(data)
-                generateDetailInformation(data);
-                modalDetail.show();
-            } catch (e) {
-                let error_message = JSON.parse(e.responseText);
-                alert(error_message.message)
-            }
-        }
-
-        function generateDetailInformation(data) {
-            $('#d-provinsi').val(data['city']['province']['name']);
-            $('#d-kota').val(data['city']['name']);
-            $('#d-alamat').val(data['address']);
-            $('#d-lokasi').val(data['location']);
-            $('#d-urlstreetview').val(data['url']);
-            $('#d-tipe').val(data['type']['name']);
-            $('#d-posisi').val(data['position']);
-            $('#d-panjang').val(data['height']);
-            $('#d-lebar').val(data['width']);
-            $('#d-sisi').val(data['side']);
-            $('#d-trafik').val(data['trafic']);
-            let latitude = data['latitude'];
-            let longitude = data['longitude'];
-            let streetViewWrapper = $('#streetview-wrapper');
-            let imageWrapper = $('#vendor-image');
-            streetViewWrapper.empty();
-            streetViewWrapper.append(data['url'])
-            imageWrapper.attr('src', data['image3']);
-
-            const myLatLng = {
-                lat: latitude,
-                lng: longitude
-            };
-            map_container = new google.maps.Map(document.getElementById("main-map"), {
-                zoom: 15,
-                center: myLatLng,
-            });
-            new google.maps.Marker({
-                position: new google.maps.LatLng(latitude, longitude),
-                map: map_container,
-            });
-        }
-
-        async function saveOrderHandler(id) {
-            try {
-                let url = path + '/' + id;
-                let data = {
-                    start: $('#startDate').val(),
-                    end: $('#endDate').val()
-                };
-                await $.post(url, data);
-                Swal.fire({
-                    title: 'Success',
-                    text: 'Berhasil Menambahkan Data...',
-                    icon: 'success',
-                    timer: 1000
-                }).then(() => {
-                    window.location.reload();
-                })
-            } catch (e) {
-                let error_message = JSON.parse(e.responseText);
-                alert(error_message.message)
-            }
-        }
-
-
-        function showDetailEvent() {
-            $('.btn-detail').on('click', function (e) {
-                e.preventDefault();
-                let id = this.dataset.id;
-                getDataDetailHandler(id);
-            });
-        }
-
-        function changeOrderEvent() {
-            $('.btn-change-order').on('click', function (e) {
-                e.preventDefault();
-                let id = this.dataset.id;
-                getDataByIDHandler(id);
-            });
-        }
-
-        function saveOrderEvent() {
-            $('#btn-save-order').on('click', function (e) {
-                e.preventDefault();
-                Swal.fire({
-                    title: "Konfirmasi!",
-                    text: "Apakah anda yakin menyimpan data?",
-                    icon: 'question',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ya',
-                    cancelButtonText: 'Batal',
-                }).then((result) => {
-                    if (result.value) {
-                        let id = $('#txt-id').val();
-                        saveOrderHandler(id);
-                    }
-                });
-
-            });
-        }
-
         $(function () {
             $.ajaxSetup({
                 headers: {
@@ -581,21 +418,14 @@
             });
         });
 
-        async function getItemsData() {
-            try {
-                let response = await $.get(path);
-                let data = response['data'];
-                generateItemElement(data);
-                console.log(response);
-            } catch (e) {
-                console.log(e);
-            }
-        }
+
 
         $(document).ready(function () {
             // generateTable();
             // saveOrderEvent();
             getItemsData();
+            saveOrderEvent();
+            eventSearchHandler();
         });
     </script>
 @endsection
