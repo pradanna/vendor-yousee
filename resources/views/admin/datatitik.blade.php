@@ -90,7 +90,7 @@
 
                 </div>
             </div>
-            <div id="result-wrapper" class="w-100 row p-3" style="gap: 0.5rem">
+            <div id="result-wrapper" class="w-100 row">
             </div>
         </div>
 

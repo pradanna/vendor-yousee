@@ -4,10 +4,23 @@ var modalDetail = new bootstrap.Modal(document.getElementById('modaldetail'));
 
 async function getItemsData() {
     try {
+        let urlParams = window.location.search;
+        let queryParam = '';
+        if (urlParams !== '') {
+            window.location.search.substr(1).split('&').forEach(function (v, k) {
+                let itemSplit = v.split('=');
+                let key = itemSplit[0];
+                let value = itemSplit[1] && decodeURIComponent(itemSplit[1]);
+                queryParam += '&' + key + '=' + value;
+            })
+        }
+        console.log(queryParam);
         let q = $('#txt-search').val();
-        let url = itemPath + '?q=' + q;
+
+        let url = itemPath + '?q=' + q + queryParam;
         let response = await $.get(url);
         let data = response['data'];
+
         generateItemElement(data);
     } catch (e) {
         alert('internal server error');
@@ -50,7 +63,7 @@ function createElement(value) {
         default:
             break;
     }
-    return '<div class="card card-item col-sm-12 col-md-12 col-lg-4 col-xl-4" data-id="' + id + '">' +
+    return '<div class="card card-item col-sm-12 col-md-12 col-lg-6 col-xl-4" data-id="' + id + '">' +
         '<div class="card-content">' +
         '<img src="' + image + '" alt="img-item" class="img-item" onerror="onErrorImage(this)" />' +
         '<div>' +
@@ -68,8 +81,8 @@ function createElement(value) {
 }
 
 function onErrorImage(el) {
-    el.onerror=null;
-    el.src='/images/local/no-image.png'
+    el.onerror = null;
+    el.src = '/images/local/no-image.png'
 }
 
 function generateItemElement(data = []) {

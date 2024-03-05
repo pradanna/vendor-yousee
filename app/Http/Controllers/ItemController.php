@@ -30,13 +30,27 @@ class ItemController extends CustomController
         if (\request()->ajax()) {
             try {
                 $queryParam = \request()->query->get('q');
-                $data = Item::with(['type', 'city', 'rent'])
-                    ->where(function ($q) use ($queryParam){
+                $type = \request()->query->get('type');
+                $status = \request()->query->get('status');
+                $queryData = Item::with(['type', 'city', 'rent']);
+
+                if ($queryParam) {
+                    $queryData = $queryData->where(function ($q) use ($queryParam) {
                         /** @var Builder $q */
                         return $q->where('address', 'LIKE', '%' . $queryParam . '%')
                             ->orWhere('location', 'LIKE', '%' . $queryParam . '%');
-                    })
-                    ->get();
+                    });
+                }
+
+                if ($type) {
+                    $queryData = $queryData->where('type_id', '=', $type);
+                }
+
+                if ($status !== null) {
+                    $intStatus = (int)$status;
+                    $queryData = $queryData->where('status_rent', '=', $intStatus);
+                }
+                $data = $queryData->get();
                 return $this->jsonSuccessResponse('success', $data);
             } catch (\Exception $e) {
                 return $this->jsonErrorResponse($e->getMessage());

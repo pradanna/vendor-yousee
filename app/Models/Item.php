@@ -12,6 +12,7 @@ class Item extends Model
     use HasFactory;
 
     protected $fillable = [
+        'type_id',
         'status_rent',
         'rent_until'
     ];

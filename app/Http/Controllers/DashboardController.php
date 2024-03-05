@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helper\CustomController;
 use App\Models\Item;
+use App\Models\Type;
 use App\Models\Vendor;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
@@ -30,19 +31,25 @@ class DashboardController extends CustomController
             ->get()->append(['status_on_rent']);
         $total = $items->count();
 
-        $empty = $items->where('status_on_rent', '!=', 'used')->values()->count();
-        $used = $items->where('status_on_rent', '=', 'used')->values()->count();
+        $empty = $items->where('status_rent', '=', 0)->values()->count();
+        $used = $items->where('status_rent', '=', 1)->values()->count();
+        $willUsed = $items->where('status_rent', '=', 2)->values()->count();
 
         if (\request()->ajax()) {
             $dataEmpty = $items->where('status_on_rent', '=', 'used')->values()->toArray();
             return DataTables::of($dataEmpty)->addIndexColumn()->make(true);
         }
 
+        $types = Type::with([])
+            ->get()->append(['items_count']);
+
         return view('admin.dashboard')
             ->with([
                 'total' => $total,
                 'empty' => $empty,
                 'used' => $used,
+                'willUsed' => $willUsed,
+                'types' => $types
             ]);
     }
 }

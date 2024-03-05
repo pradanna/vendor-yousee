@@ -23,7 +23,7 @@
                 </div>
             </a>
 
-            <a class="card-status color2" href="{{ route('item') }}">
+            <a class="card-status color2" href="{{ route('item').'?status=0' }}">
                 <div class="content">
                     <div class="stat">
                         <p class="title">Titik Masih Tersedia</p>
@@ -42,7 +42,7 @@
                 </div>
             </a>
 
-            <a class="card-status color3" href="{{ route('item') }}">
+            <a class="card-status color3" href="{{ route('item').'?status=1' }}">
                 <div class="content">
                     <div class="stat">
                         <p class="title">Titik Perpakai</p>
@@ -72,41 +72,15 @@
                 </div>
 
                 <div class="portfolio-container">
-                    <a class="portfolio" href="/admin/datatitik">
-                        <img
-                            src="https://internal.yousee-indonesia.com/images/type/3b0b46f2-0974-11ed-8622-f538f29e0354.png"/>
-                        <div class="isi">
-                            <p class="nama">Baliho</p>
-                            <p class="jumlah">360 Titik</p>
-                        </div>
-                    </a>
-
-                    <a class="portfolio" href="/admin/datatitik">
-                        <img
-                            src="https://internal.yousee-indonesia.com/images/type/3b0b46f2-0974-11ed-8622-f538f29e0354.png"/>
-                        <div class="isi">
-                            <p class="nama">Billboard</p>
-                            <p class="jumlah">360 Titik</p>
-                        </div>
-                    </a>
-
-                    <a class="portfolio" href="/admin/datatitik">
-                        <img
-                            src="https://internal.yousee-indonesia.com/images/type/3b0b46f2-0974-11ed-8622-f538f29e0354.png"/>
-                        <div class="isi">
-                            <p class="nama">Baliho</p>
-                            <p class="jumlah">360 Titik</p>
-                        </div>
-                    </a>
-
-                    <a class="portfolio" href="/admin/datatitik">
-                        <img
-                            src="https://internal.yousee-indonesia.com/images/type/3b0b46f2-0974-11ed-8622-f538f29e0354.png"/>
-                        <div class="isi">
-                            <p class="nama">Baliho</p>
-                            <p class="jumlah">360 Titik</p>
-                        </div>
-                    </a>
+                    @foreach($types as $type)
+                        <a class="portfolio" href="{{ route('item').'?type='.$type->id }}" style="cursor: pointer;">
+                            <img src="{{ asset($type->icon) }}" alt="img-icon"/>
+                            <div class="isi">
+                                <p class="nama">{{ $type->name }}</p>
+                                <p class="jumlah">{{ $type->items_count }} Titik</p>
+                            </div>
+                        </a>
+                    @endforeach
                 </div>
             </div>
 
@@ -185,7 +159,7 @@
 
                 </div>
             </div>
-            <div id="result-wrapper" class="w-100 row p-3" style="gap: 0.5rem">
+            <div id="result-wrapper" class="w-100 row">
             </div>
         </div>
     </div>
