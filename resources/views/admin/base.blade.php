@@ -141,7 +141,7 @@
 
                                 <a id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                     <img
-                                        src="https://store.sirclo.com/blog/wp-content/uploads/2022/04/6.-user-persona.jpg" />
+                                        src="https://static.vecteezy.com/system/resources/previews/000/420/940/original/avatar-icon-vector-illustration.jpg" />
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">

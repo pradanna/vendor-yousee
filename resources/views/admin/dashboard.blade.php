@@ -4,7 +4,7 @@
     <div class="dashboard">
         {{-- STATUS --}}
         <div class="status-container icon-circle">
-            <a class="card-status color1" href="{{ route('item') }}">
+            <a class="card-status color5" href="{{ route('item') }}">
                 <div class="content">
                     <div class="stat">
                         <p class="title">Jumlah Titik</p>
@@ -23,26 +23,7 @@
                 </div>
             </a>
 
-            <a class="card-status color2" href="{{ route('item') . '?status=0' }}">
-                <div class="content">
-                    <div class="stat">
-                        <p class="title">Titik Masih Tersedia</p>
-                        <p class="val">{{ $empty }}</p>
-                    </div>
-
-                    <div class="report">
-                        <p><span class="down">{{ $empty }}</span> Titik anda yang Masih Tersedia</p>
-                    </div>
-                </div>
-
-                <div class="icon-container">
-                    <span class="material-symbols-outlined">
-                        event_available
-                    </span>
-                </div>
-            </a>
-
-            <a class="card-status color3" href="{{ route('item') . '?status=1' }}">
+            <a class="card-status color1" href="{{ route('item') . '?status=0' }}">
                 <div class="content">
                     <div class="stat">
                         <p class="title">Titik Perpakai</p>
@@ -57,6 +38,44 @@
                 <div class="icon-container">
                     <span class="material-symbols-outlined">
                         cast
+                    </span>
+                </div>
+            </a>
+
+            <a class="card-status color2" href="{{ route('item') . '?status=0' }}">
+                <div class="content">
+                    <div class="stat">
+                        <p class="title">Titik Akan Disewa</p>
+                        <p class="val">{{ $willUsed }}</p>
+                    </div>
+
+                    <div class="report">
+                        <p><span class="down">{{ $willUsed }}</span> Titik yang akan disewa.</p>
+                    </div>
+                </div>
+
+                <div class="icon-container">
+                    <span class="material-symbols-outlined">
+                        pending_actions
+                    </span>
+                </div>
+            </a>
+
+            <a class="card-status color3" href="{{ route('item') . '?status=1' }}">
+                <div class="content">
+                    <div class="stat">
+                        <p class="title">Titik Masih Tersedia </p>
+                        <p class="val">{{ $empty }}</p>
+                    </div>
+
+                    <div class="report">
+                        <p><span class="down"></span> Titik anda yang Masih Tersedia </p>
+                    </div>
+                </div>
+
+                <div class="icon-container">
+                    <span class="material-symbols-outlined">
+                        event_available
                     </span>
                 </div>
             </a>
@@ -159,7 +178,7 @@
 
                 </div>
             </div>
-            <div id="result-wrapper" class="w-100 row">
+            <div id="result-wrapper" class="w-100 row gx-3 ">
             </div>
         </div>
     </div>

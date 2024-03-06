@@ -888,6 +888,7 @@ input.form-control {
   box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
   margin-bottom: 10px;
   padding: 20px;
+  margin-left: 5px;
 }
 .card-container .card .card-content {
   display: flex;
@@ -958,6 +959,18 @@ input.form-control {
 @media only screen and (max-width: 580px) {
   .table-titik {
     display: none !important;
+  }
+  .panel-peta {
+    display: flex;
+    flex-direction: column;
+  }
+  .panel-peta .maps {
+    min-height: 300px;
+  }
+  .panel-peta .street {
+    width: 100%;
+    min-height: 300px;
+    max-height: 300px;
   }
   .card-container {
     display: block !important;
