@@ -71,30 +71,61 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-4 col-sm-4">
+
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="p-pic" name="p-pic"
+                                    placeholder="Nama PIC" value="{{ $data->picName }}">
+                                <label for="p-pic" class="form-label">Nama PIC 1</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="p-nomorpic" name="p-nomorpic"
+                                    placeholder="Nomor PIC" value="{{ $data->picPhone }}">
+                                <label for="p-nomorpic" class="form-label">Nomor PIC 1</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="p-pic" name="p-pic"
+                                    placeholder="Nama PIC" value="{{ $data->picName }}">
+                                <label for="p-pic" class="form-label">Nama PIC 2</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="p-nomorpic" name="p-nomorpic"
+                                    placeholder="Nomor PIC" value="{{ $data->picPhone }}">
+                                <label for="p-nomorpic" class="form-label">Nomor PIC 2</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="p-telpkantor" name="p-telpkantor"
                                     placeholder="Nomor Telp. Kantor" value="{{ $data->phone }}">
                                 <label for="p-telpkantor" class="form-label">No. Telp Kantor</label>
                             </div>
                         </div>
-                        <div class="col-md-4 col-sm-4">
+                        <div class="col-md-6 col-sm-12">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="p-pic" name="p-pic"
-                                    placeholder="Nama PIC" value="{{ $data->picName }}">
-                                <label for="p-pic" class="form-label">Nama PIC</label>
+                                <input type="text" class="form-control" id="p-nonpwp" name="p-nonpwp"
+                                    placeholder="Nomor NPWPr" value="">
+                                <label for="p-nonpwp" class="form-label">Nomor NPWP</label>
                             </div>
                         </div>
-                        <div class="col-md-4 col-sm-4">
+                        <div class="col-md-6 col-sm-12">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="p-nomorpic" name="p-nomorpic"
-                                    placeholder="Nomor PIC" value="{{ $data->picPhone }}">
-                                <label for="p-nomorpic" class="form-label">Nomor PIC</label>
+                                <input type="file" class="form-control" id="p-ktp" name="p-ktp"
+                                    placeholder="KTP">
+                                <label for="p-ktp" class="form-label">KTP Direktur</label>
                             </div>
                         </div>
-                        <div>
+                        <div class="col-md-6 col-sm-12">
                             <div class="form-floating mb-3">
-                                <input type="file" class="form-control" id="p-logo" name="p-logo" placeholder="Logo">
+                                <input type="file" class="form-control" id="p-logo" name="p-logo"
+                                    placeholder="Logo">
                                 <label for="p-logo" class="form-label">Ganti Logo</label>
                             </div>
                         </div>
