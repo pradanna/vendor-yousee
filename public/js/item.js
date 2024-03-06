@@ -165,14 +165,14 @@ $(document).on("click", "#addData, #editData", async function () {
 
     fileImg1 = data.image1;
     fileImg2 = data.image2;
-    fileImg3 = data.image3;
+    fileImg3 = data.image1;
   }
   getSelect("province", "/data/province", "name", prov, "Pilih Provinsi");
   getSelect("vendor", "/admin/vendor/all", "name", vendor, "Pilih Vendor");
 
   setImgDropify("image1", null, fileImg1);
   setImgDropify("image2", null, fileImg2);
-  setImgDropify("image3", null, fileImg3);
+  setImgDropify("image1", null, fileImg3);
   $("#modaltambahtitik").modal({ backdrop: "static", keyboard: false });
   $("#modaltambahtitik").modal("show");
 });
@@ -224,9 +224,9 @@ $(document).on("click", "#detailData", async function () {
   //     $('#showImg2').html('<img src="' + data.image2 + '"  alt=""/>')
   //     $('#downlodShowImg2').attr('href',data.image2 ).attr('download','image2')
   // }
-  // if (data.image3) {
-  //     $('#showImg3').html('<img src="' + data.image3 + '"  alt=""/>')
-  //     $('#downlodShowImg3').attr('href',data.image3 ).attr('download','image3')
+  // if (data.image1) {
+  //     $('#showImg3').html('<img src="' + data.image1 + '"  alt=""/>')
+  //     $('#downlodShowImg3').attr('href',data.image1 ).attr('download','image1')
   // }
   // showStreetView(url);
   // $("#modaldetail").modal("show");
@@ -476,16 +476,16 @@ function saveItem() {
     //     let img = await handleImageUpload($('#image2'));
     //     formData.append('image2', img, img.name)
     // }
-    // if ($('#image3').val()) {
-    //     let img = await handleImageUpload($('#image3'));
-    //     formData.append('image3', img, img.name)
+    // if ($('#image1').val()) {
+    //     let img = await handleImageUpload($('#image1'));
+    //     formData.append('image1', img, img.name)
     // }
     let data = {
       form_data: formData,
       image: {
         image1: "image1",
         image2: "image2",
-        image3: "image3",
+        image1: "image1",
       },
     };
     saveDataAjaxWImage(
