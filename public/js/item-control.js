@@ -36,6 +36,8 @@ function createElement(value) {
   let image = "http://yousee.test/" + value["image1"];
   let city = value["city"]["name"];
   let address = value["address"];
+  let width = value["width"];
+  let height = value["height"];
   let id = value["id"];
   let statusRent = value["status_rent"];
   let statusClass = "";
@@ -82,6 +84,14 @@ function createElement(value) {
     "</p>" +
     '<p class="text-grey">' +
     address +
+    "</p>" +
+    '<p class="text-grey">' +
+    "Ukuran: " +
+    width +
+    "m" +
+    " x " +
+    height +
+    "m" +
     "</p>" +
     '<span class="status ' +
     statusClass +

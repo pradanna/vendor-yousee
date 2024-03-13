@@ -175,8 +175,27 @@
                         search
                     </span>
                     <input type="text" placeholder="Pencarian Titik" id="txt-search" />
-
                 </div>
+            </div>
+            <div class="filter-wrapper">
+                <select class="filter" aria-label="Default select example">
+                    <option selected>Kota</option>
+                    <option value="1">Surakarta</option>
+                    <option value="2">Jakarta</option>
+                    <option value="3">Bali</option>
+                </select>
+                <select class="filter" aria-label="Default select example">
+                    <option selected>Status Sewa</option>
+                    <option value="1">Tersedia</option>
+                    <option value="2">Disewa</option>
+                    <option value="3">Akan Disewa</option>
+                </select>
+                <select class="filter" aria-label="Default select example">
+                    <option selected>Jenis Iklan</option>
+                    <option value="1">Billboard</option>
+                    <option value="2">Videotron</option>
+                    <option value="3">Baliho</option>
+                </select>
             </div>
             <div id="result-wrapper" class="w-100 row gx-3 ">
             </div>

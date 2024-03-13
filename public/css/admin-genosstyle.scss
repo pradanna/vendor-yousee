@@ -27,6 +27,23 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+.filter-wrapper {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+
+  .filter {
+    font-size: 0.8rem;
+    border-radius: 50px;
+    width: auto;
+    border: none;
+    padding: 5px;
+    outline: none;
+  }
+}
 .admin {
   .pill-disewa {
     background-color: #ffcbcf;
@@ -1214,7 +1231,16 @@ input.form-control {
           .status-container {
             .card-status {
               height: 50px;
+              min-width: 30%;
 
+              .icon-container {
+                width: 30px !important;
+                height: 30px !important;
+
+                .material-symbols-outlined {
+                  font-size: 1rem;
+                }
+              }
               .report {
                 display: none !important;
               }

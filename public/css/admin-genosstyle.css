@@ -6,6 +6,23 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+.filter-wrapper {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.filter-wrapper .filter {
+  font-size: 0.8rem;
+  border-radius: 50px;
+  width: auto;
+  border: none;
+  padding: 5px;
+  outline: none;
+}
+
 .admin .pill-disewa {
   background-color: #ffcbcf;
   border-radius: 50px;
@@ -994,6 +1011,14 @@ input.form-control {
   }
   .admin .gen-body .gen-content .dashboard .status-container .card-status {
     height: 50px;
+    min-width: 30%;
+  }
+  .admin .gen-body .gen-content .dashboard .status-container .card-status .icon-container {
+    width: 30px !important;
+    height: 30px !important;
+  }
+  .admin .gen-body .gen-content .dashboard .status-container .card-status .icon-container .material-symbols-outlined {
+    font-size: 1rem;
   }
   .admin .gen-body .gen-content .dashboard .status-container .card-status .report {
     display: none !important;
