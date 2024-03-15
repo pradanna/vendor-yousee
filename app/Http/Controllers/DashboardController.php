@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helper\CustomController;
+use App\Models\City;
 use App\Models\Item;
 use App\Models\Type;
 use App\Models\Vendor;
@@ -29,6 +30,25 @@ class DashboardController extends CustomController
         $items = Item::with(['type', 'city', 'incoming_rent'])
             ->where('vendor_id', '=', auth()->id())
             ->get()->append(['status_on_rent']);
+
+        $cities_id = $items->pluck('city_id');
+        $types_id = $items->pluck('type_id');
+        $cities = [];
+        $types = [];
+        if (count($cities_id) > 0) {
+            $unique_cities = array_unique($cities_id->toArray());
+            $cities = City::with([])
+                ->whereIn('id', $unique_cities)
+                ->get();
+        }
+
+        if (count($types_id) > 0) {
+            $unique_types = array_unique($types_id->toArray());
+            $types = Type::with([])
+                ->whereIn('id', $unique_types)
+                ->get();
+        }
+
         $total = $items->count();
 
         $empty = $items->where('status_rent', '=', 0)->values()->count();
@@ -49,7 +69,9 @@ class DashboardController extends CustomController
                 'empty' => $empty,
                 'used' => $used,
                 'willUsed' => $willUsed,
-                'types' => $types
+                'types' => $types,
+                'cities' => $cities,
+                'types' => $types,
             ]);
     }
 }
