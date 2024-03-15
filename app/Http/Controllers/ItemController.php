@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Helper\CustomController;
+use App\Models\City;
 use App\Models\Item;
 use App\Models\ItemRent;
+use App\Models\Type;
 use App\Models\Vendor;
 use Carbon\Carbon;
 use Illuminate\Database\Query\Builder;
@@ -27,11 +29,14 @@ class ItemController extends CustomController
             ->update([
                 'last_seen' => $now
             ]);
+
+
         if (\request()->ajax()) {
             try {
                 $queryParam = \request()->query->get('q');
                 $type = \request()->query->get('type');
                 $status = \request()->query->get('status');
+                $city = \request()->query->get('city');
                 $queryData = Item::with(['type', 'city', 'rent']);
 
                 if ($queryParam) {
@@ -46,6 +51,10 @@ class ItemController extends CustomController
                     $queryData = $queryData->where('type_id', '=', $type);
                 }
 
+                if ($city) {
+                    $queryData = $queryData->where('city_id', '=', $city);
+                }
+
                 if ($status !== null) {
                     $intStatus = (int)$status;
                     $queryData = $queryData->where('status_rent', '=', $intStatus);
@@ -58,7 +67,29 @@ class ItemController extends CustomController
 
 //            return DataTables::of($data)->addIndexColumn()->make(true);
         }
-        return view('admin.datatitik');
+        $itemQuery = Item::with(['type', 'city', 'incoming_rent'])
+            ->where('vendor_id', '=', auth()->id());
+        $cities_id = $itemQuery->pluck('city_id');
+        $types_id = $itemQuery->pluck('type_id');
+        $cities = [];
+        $ownTypes = [];
+        if (count($cities_id) > 0) {
+            $unique_cities = array_unique($cities_id->toArray());
+            $cities = City::with([])
+                ->whereIn('id', $unique_cities)
+                ->get();
+        }
+
+        if (count($types_id) > 0) {
+            $unique_types = array_unique($types_id->toArray());
+            $ownTypes = Type::with([])
+                ->whereIn('id', $unique_types)
+                ->get();
+        }
+        return view('admin.datatitik')->with([
+            'ownTypes' => $ownTypes,
+            'cities' => $cities,
+        ]);
     }
 
     public function getDataByID($id)

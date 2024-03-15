@@ -4,7 +4,7 @@ var modalChangeOrder = new bootstrap.Modal(
 );
 var modalDetail = new bootstrap.Modal(document.getElementById("modaldetail"));
 
-async function getItemsData() {
+async function getItemsData(useFilter = false) {
   try {
     let urlParams = window.location.search;
     let queryParam = "";
@@ -19,8 +19,29 @@ async function getItemsData() {
           queryParam += "&" + key + "=" + value;
         });
     }
-    console.log(queryParam);
     let q = $("#txt-search").val();
+    let filterCity = $("#filter-city").val();
+    let filterStatus = $("#filter-status").val();
+    let filterType = $("#filter-type").val();
+
+    let filter = "";
+    if (useFilter) {
+      if (filterCity !== "") {
+        filter += "&city=" + filterCity;
+      }
+
+      if (filterStatus !== "") {
+        filter += "&status=" + filterStatus;
+      }
+
+      if (filterType !== "") {
+        filter += "&type=" + filterType;
+      }
+
+      if (filter !== "") {
+        queryParam = filter;
+      }
+    }
 
     let url = itemPath + "?q=" + q + queryParam;
     let response = await $.get(url);
@@ -261,10 +282,7 @@ function generateDetailInformation(data) {
   let imageWrapper = $("#vendor-image");
   streetViewWrapper.empty();
   streetViewWrapper.append(data["url"]);
-  imageWrapper.attr(
-    "src",
-    "https://internal.yousee-indonesia.com/" + data["image1"]
-  );
+  imageWrapper.attr("src", "http://yousee.test/" + data["image1"]);
 
   const myLatLng = {
     lat: latitude,
@@ -287,6 +305,12 @@ async function eventSearchHandler() {
       getItemsData();
     }, 1000)
   );
+}
+
+function eventFilterHandler() {
+  $(".filter").on("change", function (e) {
+    getItemsData(true);
+  });
 }
 
 function debounce(fn, delay) {
