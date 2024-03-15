@@ -130,8 +130,8 @@
                 </select>
                 <select class="filter" id="filter-type" aria-label="Default select example">
                     <option selected value="">Jenis Iklan</option>
-                    @foreach($types as $type)
-                        <option value="{{ $type->id }}">{{ $type->name }}</option>
+                    @foreach($ownTypes as $ownType)
+                        <option value="{{ $ownType->id }}">{{ $ownType->name }}</option>
                     @endforeach
                 </select>
             </div>

@@ -34,7 +34,7 @@ class DashboardController extends CustomController
         $cities_id = $items->pluck('city_id');
         $types_id = $items->pluck('type_id');
         $cities = [];
-        $types = [];
+        $ownTypes = [];
         if (count($cities_id) > 0) {
             $unique_cities = array_unique($cities_id->toArray());
             $cities = City::with([])
@@ -44,7 +44,7 @@ class DashboardController extends CustomController
 
         if (count($types_id) > 0) {
             $unique_types = array_unique($types_id->toArray());
-            $types = Type::with([])
+            $ownTypes = Type::with([])
                 ->whereIn('id', $unique_types)
                 ->get();
         }
@@ -70,8 +70,8 @@ class DashboardController extends CustomController
                 'used' => $used,
                 'willUsed' => $willUsed,
                 'types' => $types,
+                'ownTypes' => $ownTypes,
                 'cities' => $cities,
-                'types' => $types,
             ]);
     }
 }

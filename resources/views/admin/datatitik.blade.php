@@ -20,66 +20,6 @@
 
         </div>
 
-        <div class="menu-container table-titik">
-            <div class="menu overflow-hidden">
-                <div class="title-container">
-                    <p class="title">Data Titik Anda</p>
-                </div>
-                <table id="tableTitik" class="table table-striped nowrap" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>Area</th>
-                            <th>Alamat</th>
-                            <th>Panjang / Tinggi</th>
-                            <th>lebar</th>
-                            <th>type</th>
-                            <th>Status</th>
-                            {{-- status: sedang disewa / akan disewa / tersedia --}}
-                            <th>disewa tanggal</th>
-                            {{-- diisi jika status sedang disewa / nullable --}}
-                            <th>Action</th>
-                            {{-- detail, ubah status pesanan --}}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {{--                        <tr> --}}
-                        {{--                            <td>Kota Surakarta</td> --}}
-                        {{--                            <td>Jalan A Yani, Manahan, Banjarsari, Surakarta, Jawa Tengah</td> --}}
-                        {{--                            <td>5</td> --}}
-                        {{--                            <td>10</td> --}}
-                        {{--                            <td>Billboard</td> --}}
-                        {{--                            <td><span class="pill-bg disewa">disewa</span></td> --}}
-                        {{--                            <td>16 Januari 2023 - 30 februari 2025</td> --}}
-                        {{--                            <td><span class="d-flex gap-1"><a class="btn-primary-sm" data-bs-toggle="modal" --}}
-                        {{--                                        data-bs-target="#modaldetail">Detail</a> --}}
-                        {{--                                    <a class="btn-warning-sm" data-bs-toggle="modal" data-bs-target="#modalubahpesanan">Ubah --}}
-                        {{--                                        Pesanan</a> --}}
-                        {{--                                </span> --}}
-                        {{--                            </td> --}}
-                        {{--                        </tr> --}}
-
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>Area</th>
-                            <th>Alamat</th>
-                            <th>Panjang / Tinggi</th>
-                            <th>lebar</th>
-                            <th>type</th>
-                            <th>Status</th>
-                            {{-- status: sedang disewa / akan disewa / tersedia --}}
-                            <th>disewa tanggal</th>
-                            {{-- diisi jika status sedang disewa / nullable --}}
-                            <th>
-                                Action
-                            </th>
-                            {{-- detail, ubah status pesanan --}}
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-        </div>
-
         <div class="card-container">
             <div class="search-wrapper">
                 <div class="search-field">
@@ -90,23 +30,23 @@
 
                 </div>
                 <div class="filter-wrapper">
-                    <select class="filter" aria-label="Default select example">
-                        <option selected>Kota</option>
-                        <option value="1">Surakarta</option>
-                        <option value="2">Jakarta</option>
-                        <option value="3">Bali</option>
+                    <select class="filter" id="filter-city" aria-label="Default select example">
+                        <option value="" selected>Kota</option>
+                        @foreach($cities as $city)
+                            <option value="{{ $city->id }}">{{ $city->name }}</option>
+                        @endforeach
                     </select>
-                    <select class="filter" aria-label="Default select example">
-                        <option selected>Status Sewa</option>
-                        <option value="1">Tersedia</option>
-                        <option value="2">Disewa</option>
-                        <option value="3">Akan Disewa</option>
+                    <select class="filter" id="filter-status" aria-label="Default select example">
+                        <option selected value="">Status Sewa</option>
+                        <option value="0">Tersedia</option>
+                        <option value="1">Disewa</option>
+                        <option value="2">Akan Disewa</option>
                     </select>
-                    <select class="filter" aria-label="Default select example">
-                        <option selected>Jenis Iklan</option>
-                        <option value="1">Billboard</option>
-                        <option value="2">Videotron</option>
-                        <option value="3">Baliho</option>
+                    <select class="filter" id="filter-type" aria-label="Default select example">
+                        <option selected value="">Jenis Iklan</option>
+                        @foreach($ownTypes as $ownType)
+                            <option value="{{ $ownType->id }}">{{ $ownType->name }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -330,101 +270,6 @@
         // var modalChangeOrder = new bootstrap.Modal(document.getElementById('modalubahpesanan'));
         // var modalDetail = new bootstrap.Modal(document.getElementById('modaldetail'));
 
-        function generateTable() {
-            table = $('#tableTitik').DataTable({
-                paging: true,
-                processing: true,
-                "aaSorting": [],
-                "order": [],
-                scrollX: true,
-                ajax: {
-                    type: 'GET',
-                    url: path,
-                    'data': function(d) {
-                        // d.area = $('#area').val();
-                        // d.name = $('#name').val();
-                    }
-                },
-                responsive: true,
-                columns: [{
-                        data: 'city.name',
-                        name: 'city.name'
-                    },
-                    {
-                        data: 'address',
-                        name: 'address'
-                    },
-                    {
-                        data: 'height',
-                        name: 'height'
-                    },
-                    {
-                        data: 'width',
-                        name: 'width'
-                    },
-                    {
-                        data: 'type.name',
-                        name: 'type.name',
-                    }, {
-                        data: null,
-                        render: function(data) {
-
-                            if (data['rent'] !== null) {
-                                let dateStart = new Date(data['rent']['start']);
-                                let dateEnd = new Date(data['rent']['end']);
-                                let now = new Date();
-                                if (now > dateStart && now < dateEnd) {
-                                    return '<span class="pill-disewa">Disewa</span>';
-                                }
-
-                                if (now < dateStart) {
-                                    return '<span class="pill-akandisewa">Akan disewa</span>';
-                                }
-                            }
-                            return '<span class="pill-tersedia">Tersedia</span>';
-                        }
-                    }, {
-                        data: null,
-                        render: function(data) {
-                            if (data['rent'] !== null) {
-                                let dateStart = new Date(data['rent']['start']);
-                                let dateEnd = new Date(data['rent']['end']);
-                                let dateStartString = dateStart.toLocaleString('id-ID', {
-                                    year: 'numeric',
-                                    month: 'long',
-                                    day: '2-digit'
-                                });
-                                let dateEndString = dateEnd.toLocaleString('id-ID', {
-                                    year: 'numeric',
-                                    month: 'long',
-                                    day: '2-digit'
-                                });
-                                return dateStartString + '-' + dateEndString;
-                            }
-                            return '-'
-                        }
-                    }, {
-                        data: null,
-                        render: function(data) {
-                            const id = data['id'];
-                            return '<span class="d-flex gap-1">' +
-                                '<a class="btn-primary-sm btn-detail" data-id="' + id + '">Detail</a>' +
-                                '<a href="#" class="btn-danger-sm btn-change-order" data-id="' + id +
-                                '">Disewa</a>\n' +
-                                '<a href="#" class="btn-warning-sm btn-change-order" data-id="' + id +
-                                '">Akan Disewa</a>\n' +
-                                '<a href="#" class="btn-success-sm btn-change-order" data-id="' + id +
-                                '">Tersedia</a>\n' +
-                                '</span>'
-                        }
-                    },
-                ],
-                "fnDrawCallback": function() {
-                    changeOrderEvent();
-                    showDetailEvent();
-                }
-            });
-        }
 
         let startDate = document.getElementById('startDate')
         let endDate = document.getElementById('endDate')
@@ -440,11 +285,10 @@
 
 
         $(document).ready(function() {
-            // generateTable();
-            // saveOrderEvent();
             getItemsData();
             saveOrderEvent();
-            eventSearchHandler();
+            eventSearchHandler()
+            eventFilterHandler();
         });
     </script>
 @endsection
