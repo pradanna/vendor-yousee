@@ -33,7 +33,7 @@ async function getItemsData() {
 }
 
 function createElement(value) {
-  let image = "http://yousee.test/" + value["image1"];
+  let image = "https://internal.yousee-indonesia.com/" + value["image1"];
   let city = value["city"]["name"];
   let address = value["address"];
   let width = value["width"];
@@ -261,7 +261,10 @@ function generateDetailInformation(data) {
   let imageWrapper = $("#vendor-image");
   streetViewWrapper.empty();
   streetViewWrapper.append(data["url"]);
-  imageWrapper.attr("src", "http://yousee.test/" + data["image1"]);
+  imageWrapper.attr(
+    "src",
+    "https://internal.yousee-indonesia.com/" + data["image1"]
+  );
 
   const myLatLng = {
     lat: latitude,

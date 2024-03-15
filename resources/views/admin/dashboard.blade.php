@@ -93,7 +93,7 @@
                 <div class="portfolio-container">
                     @foreach ($types as $type)
                         <a class="portfolio" href="{{ route('item') . '?type=' . $type->id }}" style="cursor: pointer;">
-                            <img src="http://yousee.test/{{ $type->icon }}" alt="img-icon" />
+                            <img src="https://internal.yousee-indonesia.com/{{ $type->icon }}" alt="img-icon" />
                             <div class="isi">
                                 <p class="nama">{{ $type->name }}</p>
                                 <p class="jumlah">{{ $type->items_count }} Titik</p>
