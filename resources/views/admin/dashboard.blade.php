@@ -153,7 +153,7 @@
             </div>
 
             {{-- PENCARIAN TIDAK ADA DATA --}}
-            <div class="nodata-container">
+            <div class="nodata-container d-none" id="nodata-wrapper">
                 <div id="nodata-container" class="nodata-image">
                     <script>
                         var animation = bodymovin.loadAnimation({

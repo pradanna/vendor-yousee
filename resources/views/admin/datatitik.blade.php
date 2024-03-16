@@ -50,6 +50,40 @@
                     </select>
                 </div>
             </div>
+
+            {{-- LOADING --}}
+            <div class="loading-container">
+                <div id="loading-container" class="loading-image">
+                    <script>
+                        var animation = bodymovin.loadAnimation({
+                            container: document.getElementById('loading-container'),
+                            path: '/images/local/loading.json',
+                            rendder: 'svg',
+                            loop: true,
+                            autoplay: true,
+                            name: 'loading...'
+                        })
+                    </script>
+                </div>
+            </div>
+
+            {{-- PENCARIAN TIDAK ADA DATA --}}
+            <div class="nodata-container d-none" id="nodata-wrapper">
+                <div id="nodata-container" class="nodata-image">
+                    <script>
+                        var animation = bodymovin.loadAnimation({
+                            container: document.getElementById('nodata-container'),
+                            path: '/images/local/empty.json',
+                            rendder: 'svg',
+                            loop: true,
+                            autoplay: true,
+                            name: 'nodata...'
+                        })
+                    </script>
+                </div>
+                <p class="text-center mt-1 ">Tidak ada data dipencarian ini...</p>
+            </div>
+            
             <div id="result-wrapper" class="card-wrapper">
             </div>
         </div>
