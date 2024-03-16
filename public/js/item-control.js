@@ -153,6 +153,7 @@ function generateItemElement(data = []) {
     let elEmptyWrapper = $('#nodata-wrapper');
     parent.empty();
     if (data.length > 0) {
+        elEmptyWrapper.addClass('d-none')
         $.each(data, function (k, v) {
             parent.append(createElement(v));
         });

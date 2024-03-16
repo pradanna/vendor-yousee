@@ -83,7 +83,7 @@
                 </div>
                 <p class="text-center mt-1 ">Tidak ada data dipencarian ini...</p>
             </div>
-            
+
             <div id="result-wrapper" class="card-wrapper">
             </div>
         </div>
