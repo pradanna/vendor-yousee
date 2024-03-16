@@ -92,7 +92,7 @@ function createElement(value) {
       break;
   }
   return (
-    '<div class="card card-item col-sm-12 col-md-12 col-lg-6 col-xl-4" data-id="' +
+    '<div class="card card-item " data-id="' +
     id +
     '">' +
     '<div class="card-content">' +

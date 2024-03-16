@@ -32,7 +32,7 @@
                 <div class="filter-wrapper">
                     <select class="filter" id="filter-city" aria-label="Default select example">
                         <option value="" selected>Kota</option>
-                        @foreach($cities as $city)
+                        @foreach ($cities as $city)
                             <option value="{{ $city->id }}">{{ $city->name }}</option>
                         @endforeach
                     </select>
@@ -44,13 +44,13 @@
                     </select>
                     <select class="filter" id="filter-type" aria-label="Default select example">
                         <option selected value="">Jenis Iklan</option>
-                        @foreach($ownTypes as $ownType)
+                        @foreach ($ownTypes as $ownType)
                             <option value="{{ $ownType->id }}">{{ $ownType->name }}</option>
                         @endforeach
                     </select>
                 </div>
             </div>
-            <div id="result-wrapper" class="w-100 row">
+            <div id="result-wrapper" class="card-wrapper">
             </div>
         </div>
 
