@@ -135,6 +135,38 @@
                     @endforeach
                 </select>
             </div>
+
+            {{-- LOADING --}}
+            <div id="loading-container">
+                <script>
+                    var animation = bodymovin.loadAnimation({
+                        container: document.getElementById('loading-container'),
+                        path: '/images/local/loading.json',
+                        rendder: 'svg',
+                        loop: true,
+                        autoplay: true,
+                        name: 'loading...'
+                    })
+                </script>
+            </div>
+
+            {{-- PENCARIAN TIDAK ADA DATA --}}
+            <div>
+                <div id="nodata-container">
+                    <script>
+                        var animation = bodymovin.loadAnimation({
+                            container: document.getElementById('nodata-container'),
+                            path: '/images/local/empty.json',
+                            rendder: 'svg',
+                            loop: true,
+                            autoplay: true,
+                            name: 'nodata...'
+                        })
+                    </script>
+                </div>
+                <p class="text-center mt-1 ">Tidak ada data dipencarian ini...</p>
+            </div>
+
             <div id="result-wrapper" class="w-100 row gx-3 ">
             </div>
         </div>

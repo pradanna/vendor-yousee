@@ -282,7 +282,10 @@ function generateDetailInformation(data) {
   let imageWrapper = $("#vendor-image");
   streetViewWrapper.empty();
   streetViewWrapper.append(data["url"]);
-  imageWrapper.attr("src", "http://yousee.test/" + data["image1"]);
+  imageWrapper.attr(
+    "src",
+    "https://internal.yousee-indonesia.com/" + data["image1"]
+  );
 
   const myLatLng = {
     lat: latitude,
