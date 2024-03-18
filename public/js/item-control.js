@@ -118,7 +118,7 @@ function createElement(value) {
     '<span class="status ' +
     statusClass +
     '">' +
-    "disewa" +
+    statusString +
     "</span>" +
     rentUntilString +
     "</div>" +
