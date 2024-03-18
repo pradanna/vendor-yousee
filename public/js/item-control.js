@@ -91,7 +91,6 @@ function createElement(value) {
     statusClass = "akandiseway";
     statusString = "Akan Disewa";
   }
-
   return (
     '<div class="card card-item " data-id="' +
     id +
