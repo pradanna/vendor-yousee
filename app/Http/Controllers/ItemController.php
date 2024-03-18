@@ -43,7 +43,7 @@ class ItemController extends CustomController
                 if ($queryParam) {
                     $queryData = $queryData->where(function ($q) use ($queryParam) {
                         /** @var Builder $q */
-                        return $q->where('address', 'LIKE', '%' . $queryParam . '%')
+                        return $q->where('address', 'LIKE', '%' . $queryParam . '%')->whereNull('deleted_at')
                             ->orWhere('location', 'LIKE', '%' . $queryParam . '%');
                     });
                 }
@@ -69,7 +69,7 @@ class ItemController extends CustomController
             //            return DataTables::of($data)->addIndexColumn()->make(true);
         }
         $itemQuery = Item::with(['type', 'city', 'incoming_rent'])
-            ->where([['vendor_id', '=', auth()->id()], ['deleted_at', '=', null]]);
+            ->where('vendor_id', '=', auth()->id())->whereNull('deleted_at');
         $cities_id = $itemQuery->pluck('city_id');
         $types_id = $itemQuery->pluck('type_id');
         $cities = [];
