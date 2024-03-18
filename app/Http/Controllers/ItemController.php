@@ -38,7 +38,7 @@ class ItemController extends CustomController
                 $status = \request()->query->get('status');
                 $city = \request()->query->get('city');
                 $queryData = Item::with(['type', 'city', 'rent'])
-                ->where('vendor_id', '=', auth()->id());
+                    ->where('vendor_id', '=', auth()->id());
 
                 if ($queryParam) {
                     $queryData = $queryData->where(function ($q) use ($queryParam) {
@@ -66,10 +66,10 @@ class ItemController extends CustomController
                 return $this->jsonErrorResponse($e->getMessage());
             }
 
-//            return DataTables::of($data)->addIndexColumn()->make(true);
+            //            return DataTables::of($data)->addIndexColumn()->make(true);
         }
         $itemQuery = Item::with(['type', 'city', 'incoming_rent'])
-            ->where('vendor_id', '=', auth()->id());
+            ->where([['vendor_id', '=', auth()->id()], ['deleted_at', '=', null]]);
         $cities_id = $itemQuery->pluck('city_id');
         $types_id = $itemQuery->pluck('type_id');
         $cities = [];
@@ -109,7 +109,7 @@ class ItemController extends CustomController
                 return $this->jsonNotFoundResponse();
             }
             if (\request()->method() === 'POST') {
-//                return $this->addRentHistory($id);
+                //                return $this->addRentHistory($id);
                 return $this->changeStatusRent($id);
             }
             return $this->jsonSuccessResponse('success', $data);

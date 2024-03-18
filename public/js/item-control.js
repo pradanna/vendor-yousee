@@ -71,31 +71,25 @@ function createElement(value) {
   let statusString = "-";
   let rentUntilString = "";
 
-  switch (statusRent) {
-    case 0:
-      statusClass = "tersedia";
-      statusString = "Tersedia";
-      break;
-    case 1:
-      statusClass = "disewa";
-      statusString = "Disewa";
-      let dateRentUntil = value["rent_until"];
-      if (dateRentUntil !== null) {
-        let date = new Date(dateRentUntil);
-        let dateString = date.toLocaleDateString("id-ID", {
-          day: "numeric",
-          month: "long",
-          year: "numeric",
-        });
-        rentUntilString = "<p>Di sewa sampai tanggal " + dateString + "</p>";
-      }
-      break;
-    case 2:
-      statusClass = "akandiseway";
-      statusString = "Akan Disewa";
-      break;
-    default:
-      break;
+  if (statusRent === 0) {
+    statusClass = "tersedia";
+    statusString = "Tersedia";
+  } else if (statusRent === 1) {
+    statusClass = "disewa";
+    statusString = "Disewa";
+    let dateRentUntil = value["rent_until"];
+    if (dateRentUntil !== null) {
+      let date = new Date(dateRentUntil);
+      let dateString = date.toLocaleDateString("id-ID", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      });
+      rentUntilString = "<p>Di sewa sampai tanggal " + dateString + "</p>";
+    }
+  } else {
+    statusClass = "akandiseway";
+    statusString = "Akan Disewa";
   }
 
   return (
