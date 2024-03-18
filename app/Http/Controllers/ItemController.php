@@ -37,13 +37,13 @@ class ItemController extends CustomController
                 $type = \request()->query->get('type');
                 $status = \request()->query->get('status');
                 $city = \request()->query->get('city');
-                $queryData = Item::with(['type', 'city', 'rent'])
+                $queryData = Item::with(['type', 'city', 'rent'])->whereNull('deleted_at')
                     ->where('vendor_id', '=', auth()->id());
 
                 if ($queryParam) {
                     $queryData = $queryData->where(function ($q) use ($queryParam) {
                         /** @var Builder $q */
-                        return $q->where('address', 'LIKE', '%' . $queryParam . '%')->whereNull('deleted_at')
+                        return $q->where('address', 'LIKE', '%' . $queryParam . '%')
                             ->orWhere('location', 'LIKE', '%' . $queryParam . '%');
                     });
                 }
