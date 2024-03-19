@@ -157,6 +157,11 @@
                         </div>
                     </div>
                 </form>
+
+                <hr>
+                <div class="d-flex justify-content-center ">
+                    <a class="logout-button" href="/logout"> Logout </a>
+                </div>
             </div>
         </div>
     </div>

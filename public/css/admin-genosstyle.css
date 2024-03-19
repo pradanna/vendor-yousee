@@ -6,6 +6,14 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+.logout-button {
+  all: unset;
+  color: red;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .filter-wrapper {
   display: flex;
   overflow-x: auto;

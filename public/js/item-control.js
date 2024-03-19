@@ -71,10 +71,10 @@ function createElement(value) {
   let statusString = "-";
   let rentUntilString = "";
 
-  if (statusRent === 0) {
+  if (statusRent === "0") {
     statusClass = "tersedia";
     statusString = "Tersedia";
-  } else if (statusRent === 1) {
+  } else if (statusRent === "1") {
     statusClass = "disewa";
     statusString = "Disewa";
     let dateRentUntil = value["rent_until"];
