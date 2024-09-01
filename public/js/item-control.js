@@ -297,6 +297,8 @@ function generateDetailInformation(data) {
     lat: latitude,
     lng: longitude,
   };
+  console.log(myLatLng);
+
   map_container = new google.maps.Map(document.getElementById("main-map"), {
     zoom: 15,
     center: myLatLng,
