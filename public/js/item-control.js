@@ -294,8 +294,8 @@ function generateDetailInformation(data) {
   );
 
   const myLatLng = {
-    lat: latitude,
-    lng: longitude,
+    lat: parseFloat(latitude),
+    lng: parseFloat(longitude),
   };
   console.log(myLatLng);
 
