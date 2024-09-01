@@ -18,7 +18,7 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     {{-- CSS --}}
-    <link href="{{ asset('css/admin-genosstyle.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/admin-genosstyle2.css') }}" rel="stylesheet" />
 
     {{-- FONT --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">

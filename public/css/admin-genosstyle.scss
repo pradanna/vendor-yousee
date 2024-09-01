@@ -1047,6 +1047,7 @@ input.form-control {
 
 .panel-peta {
   display: flex;
+  height: 600px;
 
   .maps {
     position: relative;
@@ -1066,7 +1067,6 @@ input.form-control {
 }
 
 .panel-gambar {
-  height: 600px;
   position: relative;
   padding: 10px;
   overflow: hidden;
