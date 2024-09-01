@@ -380,7 +380,7 @@
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1MgLuZuyqR_OGY3ob3M52N46TDBRI_9k&callback=initMap&v=weekly"
         async></script>
-    <script src="{{ asset('/js/item-control.js') }}"></script>
+    <script src="{{ asset('/js/item-control2.js') }}"></script>
     <script>
         var path = '/{{ request()->path() }}';
         var itemPath = '{{ route('item') }}';
