@@ -62,7 +62,7 @@ class AuthController extends CustomController
                     ]);
                 return redirect()->back()->with('success', 'Berhasil');
             } catch (\Exception $e) {
-                return redirect()->back()->with('failed', 'Terjadi kesalahan server... ' + $e)->withInput();
+                return redirect()->back()->with('failed', 'Terjadi kesalahan server... ' . $e)->withInput();
             }
         }
         return view('auth.login');
