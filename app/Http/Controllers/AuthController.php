@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends CustomController
@@ -62,7 +63,13 @@ class AuthController extends CustomController
                     ]);
                 return redirect()->back()->with('success', 'Berhasil');
             } catch (\Exception $e) {
-                return redirect()->back()->with('failed', 'Terjadi kesalahan server... ' . $e)->withInput();
+                Log::error('Login error: ' . $e->getMessage(), [
+                    'file' => $e->getFile(),
+                    'line' => $e->getLine(),
+                    'trace' => $e->getTraceAsString(),
+                ]);
+                // return redirect()->back()->with('failed', 'Terjadi kesalahan server... ' . $e)->withInput();
+
             }
         }
         return view('auth.login');
