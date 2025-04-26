@@ -7,6 +7,8 @@ namespace App\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Vendor;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class CustomController extends Controller
 {
@@ -59,5 +61,42 @@ class CustomController extends Controller
             ->update([
                 'last_seen' => $now
             ]);
+    }
+
+    public function jsonResponse($msg = '', $status = 200, $data = null)
+    {
+        return response()->json([
+            'status' => $status,
+            'message' => $msg,
+            'payload' => $data
+        ], $status);
+    }
+
+    public function uploadImage($field, $targetName = '', $disk = 'upload')
+    {
+        $file = request()->file($field);
+        return Storage::disk($disk)->put($targetName, File::get($file));
+    }
+
+
+
+
+
+    /**
+     * @param $field
+     *
+     * @return string
+     */
+    public function generateImageName($field = '')
+    {
+        $value = '';
+        if (request()->hasFile($field)) {
+            $files     = request()->file($field);
+            $extension = $files->getClientOriginalExtension();
+            $name      = $this->uuidGenerator();
+            $value     = $name . '.' . $extension;
+        }
+
+        return $value;
     }
 }

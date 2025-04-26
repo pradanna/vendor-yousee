@@ -21,6 +21,11 @@ class ItemController extends CustomController
         parent::__construct();
     }
 
+    public function getType()
+    {
+        return type::all();
+    }
+
     public function index()
     {
         $now = Carbon::now()->format('Y-m-d H:i:s');
