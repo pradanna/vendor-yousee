@@ -78,16 +78,7 @@
 
     </nav>
 
-    <nav class="g-navbar  nav-mobile">
-        <img src="{{ asset('images/local/logo-yousee-panjang.png') }}" />
 
-        <a class="" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            <img class="iconmenu" src="{{ asset('images/local/icon/menu.svg') }}" />
-        </a>
-
-
-
-    </nav>
 
     @yield('content')
 

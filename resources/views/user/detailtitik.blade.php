@@ -14,7 +14,6 @@
 @section('content')
     <div class="g-hero">
         <div class="hero-text">
-            <img src="{{ asset('images/local/titikseluruhindonesia.png') }}" />
         </div>
         <div class="detail-titik">
             <div class="detailtitik-content">
