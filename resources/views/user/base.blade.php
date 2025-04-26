@@ -72,10 +72,11 @@
     <!-- List Keranjang yang Expand dari Kanan -->
 
 
-    <nav class="g-navbar container nav-website">
-        <a href="/titik-kami"><img src="{{ asset('images/local/logo-yousee-panjang.png') }}" /></a>
-
-
+    <nav class="text-center mt-5 mb-3">
+        <a href="/titik-kami">
+            <img src="{{ asset('images/local/logo-yousee-panjang.png') }}" class="img-fluid"
+                style="max-width: 200px;" />
+        </a>
     </nav>
 
 

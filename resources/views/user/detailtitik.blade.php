@@ -15,7 +15,7 @@
     <div class="g-hero">
         <div class="hero-text">
         </div>
-        <div class="detail-titik">
+        <div class="detail-titik " style="margin-top: 0 !important">
             <div class="detailtitik-content">
                 <div class="detailtitik-wrapper">
                     <img src="{{ $dom . $data->image2 }}" />

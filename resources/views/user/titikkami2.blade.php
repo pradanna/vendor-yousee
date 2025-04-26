@@ -57,7 +57,7 @@
             {{-- <img src="{{ asset('images/local/carititik' . (app()->getLocale() === 'en' ? '_engver' : '') . '.png') }}"
                 class="img-titikseluruhindonesia" /> --}}
         </div>
-        <div class="pencarian-container peta">
+        <div class="pencarian-container peta" style="margin-top: 0 !important">
             <div class="pencarian-content w-100">
                 <div class="pencarian-wrapper ">
                     <p class="title">{{ trans('Tersedia Titik diseluruh Indonesia') }}</p>
